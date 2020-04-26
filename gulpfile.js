@@ -4,16 +4,22 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     dom = require('gulp-dom'),
     fs = require('fs'),
-    path = require('path');
+    path = require('path'),
+    htmlbeautify = require('gulp-html-beautify');
 
 function getFolders(dir) {
     return fs.readdirSync(dir)
         .filter(function(file) {
+            console.log(fs.statSync(path.join(dir, file)).isDirectory())
+            if(file.indexOf('_') > -1 || file === 'media' || file == 'wp-content' || file == 'nextversion') {
+                return false;
+            }
+
             return fs.statSync(path.join(dir, file)).isDirectory();
         });
 }
 
-gulp.task('mergecss', function() {
+gulp.task('mergeCss', function() {
     return gulp
         .src(['./css/*.css'])
         .pipe(concat('styles.css'))
@@ -21,7 +27,7 @@ gulp.task('mergecss', function() {
         .pipe(gulp.dest('dist'))
 });
 
-gulp.task('extractcontent', function () {
+gulp.task('extractContent', function () {
     return gulp
         .src('./dist/news/*.html')
         .pipe(dom(function() {
@@ -45,7 +51,7 @@ gulp.task('news', function() {
    return tasks;
 });
 
-gulp.task('removestyles', function () {
+gulp.task('removeStyles', function () {
     return gulp
         .src('dist/news/*/*.html',  { base: "./" })
         .pipe(dom(function() {
@@ -68,7 +74,7 @@ gulp.task('removestyles', function () {
         .pipe(gulp.dest('.'))
 });
 
-gulp.task('injectstyles', function () {
+gulp.task('injectStyles', function () {
     return gulp
         .src('dist/news/*/*.html',  { base: "./" })
         .pipe(dom(function() {
@@ -85,3 +91,46 @@ gulp.task('injectstyles', function () {
         }))
         .pipe(gulp.dest('.'))
 });
+
+
+gulp.task('extractArticles', function () {
+    let options = {
+        indentSize: 4
+    };
+
+    return gulp
+        .src('./vue/news/*.html')
+        .pipe(dom(function() {
+            let article = this.querySelector('article');
+
+            return article.outerHTML;
+        }))
+        .pipe(htmlbeautify(options))
+        .pipe(gulp.dest('./vue/news/'))
+});
+
+gulp.task('renameRootFiles', function() {
+    var folders = getFolders('dist');
+
+    var tasks = folders.map(function(folder) {
+       return gulp.src(path.join('dist', folder, '/index.html'))
+         .pipe(gulp.dest('./'))
+         .pipe(rename(folder + '.html')) 
+         .pipe(gulp.dest('vue'));
+    });
+ 
+    return tasks;
+ });
+
+ gulp.task('renameOurMission', function() {
+    var folders = getFolders('dist/our-mission');
+
+    var tasks = folders.map(function(folder) {
+       return gulp.src(path.join('dist/our-mission', folder, '/index.html'))
+         .pipe(gulp.dest('./'))
+         .pipe(rename(folder + '.html')) 
+         .pipe(gulp.dest('vue/our-mission'));
+    });
+ 
+    return tasks;
+ });
