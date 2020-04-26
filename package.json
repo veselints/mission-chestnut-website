@@ -1,0 +1,26 @@
+{
+  "name": "mission-chestnut-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/veselints/mission-chestnut-website.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/veselints/mission-chestnut-website/issues"
+  },
+  "homepage": "https://github.com/veselints/mission-chestnut-website#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-dom": "^1.0.0",
+    "gulp-rename": "^2.0.0"
+  }
+}
