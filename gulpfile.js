@@ -44,3 +44,43 @@ gulp.task('news', function() {
 
    return tasks;
 });
+
+gulp.task('removestyles', function () {
+    return gulp
+        .src('dist/news/**/*.html',  { base: "./" })
+        .pipe(dom(function() {
+            let links = this.querySelectorAll('link');
+            let style = this.querySelector('style');
+            let i;
+            
+            if(style) {
+                style.parentNode.removeChild(style);
+            }
+
+            if(links) {
+                for(i = 0; i < links.length; i += 1) {
+                    links[i].parentNode.removeChild(links[i]);
+                }
+            }
+
+            return this;
+        }))
+        .pipe(gulp.dest('.'))
+});
+
+gulp.task('injectstyles', function () {
+    return gulp
+        .src('dist/news/**/*.html',  { base: "./" })
+        .pipe(dom(function() {
+            let style = this.createElement('style')
+            let head = this.querySelector('head');
+
+            if(head) {
+                style.setAttribute('href', '/styles.css');
+                head.appendChild(style);
+            }
+
+            return this;
+        }))
+        .pipe(gulp.dest('.'))
+});
