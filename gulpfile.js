@@ -24,28 +24,28 @@ gulp.task('mergeCss', function() {
         .src(['./css/*.css'])
         .pipe(concat('styles.css'))
         .pipe(cleanCss({level:{1:{specialComments:0},2:{removeDuplicateRules:true}}}))
-        .pipe(gulp.dest('dist'))
+        .pipe(gulp.dest('static'))
 });
 
 gulp.task('extractContent', function () {
     return gulp
-        .src('./dist/news/*.html')
+        .src('./static/news/*.html')
         .pipe(dom(function() {
             let article = this.querySelector('#middle');
             console.log(article.innerHTML)
             return article.innerHTML;
         }))
-        .pipe(gulp.dest('./dist/news/'))
+        .pipe(gulp.dest('./static/news/'))
 });
 
 gulp.task('news', function() {
-   var folders = getFolders('dist/news');
+   var folders = getFolders('static/news');
 
    var tasks = folders.map(function(folder) {
-      return gulp.src(path.join('dist/news', folder, '/index.html'))
+      return gulp.src(path.join('static/news', folder, '/index.html'))
         .pipe(gulp.dest('./'))
         .pipe(rename(folder + '.html')) 
-        .pipe(gulp.dest('dist/news'));
+        .pipe(gulp.dest('static/news'));
    });
 
    return tasks;
@@ -53,7 +53,7 @@ gulp.task('news', function() {
 
 gulp.task('removeStyles', function () {
     return gulp
-        .src('dist/news/*/*.html',  { base: "./" })
+        .src('static/news/*/*.html',  { base: "./" })
         .pipe(dom(function() {
             let links = this.querySelectorAll('link');
             let style = this.querySelector('style');
@@ -76,7 +76,7 @@ gulp.task('removeStyles', function () {
 
 gulp.task('injectStyles', function () {
     return gulp
-        .src('dist/news/*/*.html',  { base: "./" })
+        .src('static/news/*/*.html',  { base: "./" })
         .pipe(dom(function() {
             let style = this.createElement('link')
             let head = this.querySelector('head');
@@ -110,10 +110,10 @@ gulp.task('extractArticles', function () {
 });
 
 gulp.task('renameRootFiles', function() {
-    var folders = getFolders('dist');
+    var folders = getFolders('static');
 
     var tasks = folders.map(function(folder) {
-       return gulp.src(path.join('dist', folder, '/index.html'))
+       return gulp.src(path.join('static', folder, '/index.html'))
          .pipe(gulp.dest('./'))
          .pipe(rename(folder + '.html')) 
          .pipe(gulp.dest('vue'));
@@ -123,10 +123,10 @@ gulp.task('renameRootFiles', function() {
  });
 
  gulp.task('renameOurMission', function() {
-    var folders = getFolders('dist/our-mission');
+    var folders = getFolders('static/our-mission');
 
     var tasks = folders.map(function(folder) {
-       return gulp.src(path.join('dist/our-mission', folder, '/index.html'))
+       return gulp.src(path.join('static/our-mission', folder, '/index.html'))
          .pipe(gulp.dest('./'))
          .pipe(rename(folder + '.html')) 
          .pipe(gulp.dest('vue/our-mission'));
