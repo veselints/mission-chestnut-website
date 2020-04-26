@@ -47,7 +47,7 @@ gulp.task('news', function() {
 
 gulp.task('removestyles', function () {
     return gulp
-        .src('dist/news/**/*.html',  { base: "./" })
+        .src('dist/news/*/*.html',  { base: "./" })
         .pipe(dom(function() {
             let links = this.querySelectorAll('link');
             let style = this.querySelector('style');
@@ -70,13 +70,14 @@ gulp.task('removestyles', function () {
 
 gulp.task('injectstyles', function () {
     return gulp
-        .src('dist/news/**/*.html',  { base: "./" })
+        .src('dist/news/*/*.html',  { base: "./" })
         .pipe(dom(function() {
-            let style = this.createElement('style')
+            let style = this.createElement('link')
             let head = this.querySelector('head');
 
             if(head) {
                 style.setAttribute('href', '/styles.css');
+                style.setAttribute('rel', 'stylesheet');
                 head.appendChild(style);
             }
 
