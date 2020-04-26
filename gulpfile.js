@@ -134,3 +134,19 @@ gulp.task('renameRootFiles', function() {
  
     return tasks;
  });
+
+ gulp.task('extractMiddleInner', function () {
+    let options = {
+        indentSize: 4
+    };
+
+    return gulp
+        .src('./vue/our-mission/*.html')
+        .pipe(dom(function() {
+            let inner = this.querySelector('.middle_inner');
+
+            return inner.outerHTML;
+        }))
+        .pipe(htmlbeautify(options))
+        .pipe(gulp.dest('./vue/our-mission/'))
+});
