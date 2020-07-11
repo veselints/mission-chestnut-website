@@ -1,0 +1,123 @@
+<template>
+  <div class="middle_inner">
+    <section class="content_wrap fullwidth">
+        <!--_________________________ Start Content _________________________ -->
+        <div class="middle_content entry" role="main"></div>
+    </section>
+    <div id="cmsms_row_5e3286f05c626" class="cmsms_row cmsms_color_scheme_default">
+        <div class="cmsms_row_outer_parent">
+            <div class="cmsms_row_outer">
+                <div class="cmsms_row_inner">
+                    <div class="cmsms_row_margin">
+                        <div class="cmsms_column one_first">
+                            <h1 id="cmsms_heading_5e3286f05c92e" class="cmsms_heading">От какво страдат кестените</h1>
+                            <h4 id="cmsms_heading_5e3286f05c9dd" class="cmsms_heading">Забелязвали ли сте как още в средата на юли прекрасните разперени листа на кестените стават кафяви? От 20 години кестените в България боледуват, като проблемът с всеки изминал сезон обхваща по-големи райони. Причината – един смъртоносен за фотосинтезата вредител, листоминиращият молец (Cameraria ohridella). Скоро всички 40-50-годишни символи на столицата ни могат да бъдат тотално унищожени.</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="cmsms_row_5e3286f05cb56" class="cmsms_row cmsms_color_scheme_default">
+        <div class="cmsms_row_outer_parent">
+            <div class="cmsms_row_outer">
+                <div class="cmsms_row_inner">
+                    <div class="cmsms_row_margin">
+                        <div class="cmsms_column one_third"></div>
+                        <div class="cmsms_column one_third">
+                            <router-link to="/moths">
+                                <img src="images/mission-01.png" alt=" Листоминиращ молец">
+                            </router-link>
+                            <h4 class="cmsms_img_caption">Листоминиращ молец</h4>
+                        </div>
+                        <div class="cmsms_column one_third"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="cmsms_row_5e3286f05e49f" class="cmsms_row cmsms_color_scheme_default">
+        <div class="cmsms_row_outer_parent">
+            <div class="cmsms_row_outer">
+                <div class="cmsms_row_inner">
+                    <div class="cmsms_row_margin">
+                        <div class="cmsms_column one_first">
+                            <div id="cmsms_divider_5e3286f05e894" class="cmsms_divider solid"></div>
+                            <h1 id="cmsms_heading_5e3286f05e95c" class="cmsms_heading">Нашата мисия</h1>
+                            <h4 id="cmsms_heading_5e3286f05ea4f" class="cmsms_heading">Привличайки за участие шест столични училища, “Мисия Кестен” ще приложи трите най-лесни, ефективни и безвредни за околната среда практики за ограничаване разпространението на листоминиращия молец. На есен включилите се ученици ще събират окапалата от дърветата шума, през зимата ще монтират къщички за синигери, които са естествен враг на насекомото, а на пролет ще подготвят и поставят феромонни капани за привличане и улавяне на молците. </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="cmsms_row_5e3286f05ec4f" class="cmsms_row cmsms_color_scheme_default">
+        <div class="cmsms_row_outer_parent">
+            <div class="cmsms_row_outer">
+                <div class="cmsms_row_inner">
+                    <div class="cmsms_row_margin">
+                        <div class="cmsms_column one_third">
+                            <router-link to="/leafs">
+                                <img src="images/mission-02.png" alt=" Събиране на шума">
+                            </router-link>
+                            <h4 class="cmsms_img_caption">Събиране на шума</h4>
+                        </div>
+                        <div class="cmsms_column one_third">
+                            <router-link to="/birds">
+                                <img src="images/mission-03.png" alt=" Къщички за синигери">
+                            </router-link>
+                            <h4 class="cmsms_img_caption">Къщички за синигери</h4>
+                        </div>
+                        <div class="cmsms_column one_third">
+                            <router-link to="/traps">
+                                <img src="images/mission-04.png" alt=" Феромонни Капани">
+                            </router-link>
+                            <h4 class="cmsms_img_caption">Феромонни Капани</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="cmsms_row_5e3286f062423" class="cmsms_row cmsms_color_scheme_default">
+        <div class="cmsms_row_outer_parent">
+            <div class="cmsms_row_outer">
+                <div class="cmsms_row_inner">
+                    <div class="cmsms_row_margin">
+                        <div class="cmsms_column one_first">
+                            <div id="cmsms_divider_5e3286f062852" class="cmsms_divider solid"></div>
+                            <h1 id="cmsms_heading_5e3286f062917" class="cmsms_heading">Картотекиране</h1>
+                            <h4 id="cmsms_heading_5e3286f0629cc" class="cmsms_heading">Освен горните три начина за справяне с листоминиращият молец, „Мисия Кестен“ има за цел преброяването не кестените в шест столични градини. Преброяването на дърветата включва събиране на GPS данни за местоположението на кестените в база данни чрез мобилно устройство със специално разработен софтуер.</h4>
+                            <div id="cmsms_button_5e3286f062aef" class="button_wrap">
+                                <router-link to="/results" class="cmsms_button">Резултати</router-link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="content_wrap fullwidth">
+        <div class="middle_content entry" role="main"></div>
+        <!-- _________________________ Finish Content _________________________ -->
+    </section>
+</div>
+</template>
+
+<script>
+export default {
+  name: 'OurMission',
+  components: {
+  },
+  data() {
+    return {
+      location: "OurMission",
+      title: "OurMission"
+    }
+  }
+}
+</script>
+
+<style>
+
+</style>

@@ -1,0 +1,39 @@
+<template>
+    <div class="middle_inner">
+        <div class="cmsms_row cmsms_color_scheme_default">
+            <div class="cmsms_row_outer_parent">
+                <div class="cmsms_row_outer">
+                    <div class="cmsms_row_inner">
+                        <div class="cmsms_row_margin">
+                            <div class="cmsms_column one_half">
+                                <ul class="cmsms_icon_list_items cmsms_icon_list_type_list cmsms_icon_list_pos_left cmsms_color_type_border">
+                                    <li class="cmsms_icon_list_item cmsms-icon-user-7">Веселин Цветанов</li>
+                                    <li class="cmsms_icon_list_item cmsms-icon-mobile-6">+359 898 63 11 06</li>
+                                    <li class="cmsms_icon_list_item cmsms-icon-mail-7"><a href="mailto:veselintsvetanov@gmail.com">veselintsvetanov@gmail.com</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+  name: 'Contacts',
+  components: {
+  },
+  data() {
+    return {
+      location: "Contacts",
+      title: "Contacts"
+    }
+  }
+}
+</script>
+
+<style>
+
+</style>

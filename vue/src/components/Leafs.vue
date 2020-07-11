@@ -1,0 +1,65 @@
+<template>
+  <div class="middle_inner">
+    <section class="content_wrap fullwidth">
+        <div class="middle_content entry" role="main"></div>
+    </section>
+    <div id="cmsms_row_5e3286f29363d" class="cmsms_row cmsms_color_scheme_default">
+        <div class="cmsms_row_outer_parent">
+            <div class="cmsms_row_outer">
+                <div class="cmsms_row_inner">
+                    <div class="cmsms_row_margin">
+                        <div class="cmsms_column one_first">
+                            <h1 id="cmsms_heading_5e3286f29385f" class="cmsms_heading">Където зимуват молците</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="cmsms_row_5e3286f293965" class="cmsms_row cmsms_color_scheme_default">
+        <div class="cmsms_row_outer_parent">
+            <div class="cmsms_row_outer">
+                <div class="cmsms_row_inner">
+                    <div class="cmsms_row_margin">
+                        <div class="cmsms_column one_third">
+                            <div class="cmsms_img  cmsms_image_n">
+                                <a href="images/blog-16-2013_27.jpg">
+                                    <img src="images/blog-16-2013_27-300x225.jpg" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="cmsms_column two_third">
+                            <div class="cmsms_text">
+                                <p>Най-ефективният метод за ограничаване популацията на листоминиращия молец е падналите през есента кестенови листа да се събират, заравят, компостират или изгарят. Тогава какавидите умират и от тях напролет не се появяват нови поколения.</p>
+                                <p>В повечето големи паркове в София, както и по по-големите градски улици това се прави от Дирекция „Зелена система” на Столична община и фирмите, които са наети да поддържат зелените площи в града. Не така стои въпросът с междублоковите пространства, градинките и малките улици. Това са териториите, в които всеки един от нас, жителите на града, може да се постарае да събере на есен окапалата шума. Опитът ни показва, че при установяване на добра комуникация със специалистите по екология от съответния район, подкрепата за това листата да бъдат в последствие извозвани е гарантирана.</p>
+                                <p>За дърветата е важно да бъдат почистени от окапалата шума възможно най-много територии залесени с кестени. Що се отнася до разпределението на популацията от молци в територията на града, проведени в Берн изследвания показват, че то се характеризира с т. нар. ефект на „хранилища” и „мивки”. „Хранилищата” са непочистени територии с голяма популация на Cameraria Ohridella, индивиди от която, през активния период (месеците април-септември), постепенно нападат почистените преди това „мивки”.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="content_wrap fullwidth">
+        <div class="middle_content entry" role="main"></div>
+    </section>
+</div>
+</template>
+
+<script>
+export default {
+  name: 'Leafs',
+  components: {
+  },
+  data() {
+    return {
+      location: "Leafs",
+      title: "Leafs"
+    }
+  }
+}
+</script>
+
+<style>
+
+</style>

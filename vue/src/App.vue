@@ -1,5 +1,6 @@
 <template>
     <div id="main">
+
       <header id="header">
         <div class="header_mid" data-height="120">
           <div class="header_mid_outer">
@@ -7,7 +8,7 @@
 
               <div class="logo_wrap">
                 <router-link to="/home" title="Мисия Кестен" class="logo">
-                  <img src="/_content/images/2014/10/mission-chestnut-logo%402x.png" alt="Мисия Кестен" />
+                  <img src="images/mission-chestnut-logo%402x.png" alt="Мисия Кестен" />
                 </router-link>
               </div>
 
@@ -26,7 +27,7 @@
                           </router-link>
                         </li>
                         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-                          <router-link to="/leafts">
+                          <router-link to="/leafs">
                             <span>Събиране на шума</span>
                           </router-link>
                         </li>
@@ -60,14 +61,14 @@
                         <span>За нас</span>
                       </router-link>
                     </li>
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item">
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page">
                       <router-link to="/contacts">
                         <span class="nav_bg_clr"></span>
                         <span>Контакти</span>
                       </router-link>
                     </li>
                     <li id="menu-item-3826"
-                      class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item">
+                      class="menu-item menu-item-type-custom menu-item-object-custom">
                       <a target="_blank" href="http://eeagrants.org/">
                         <span class="nav_bg_clr" style="background-color:#ffffff;"></span>
                         <span>eeagrants.org</span>
@@ -82,44 +83,55 @@
         </div>
       </header>
 
-      <!-- Content goes here -->
-      <!-- <div id="app"></div> -->
-      <router-view></router-view>
-      <!-- Content goes here -->
+      <section id="middle">
+        <div class="headline cmsms_color_scheme_default">
+          <div class="headline_outer">
+            <div class="headline_color"></div>
+            <div class="headline_inner align_left">
+              <div class="headline_aligner"></div>
+              <div class="headline_text">
+                <h1 class="entry-title">{{location}}</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cmsms_breadcrumbs">
+          <div class="cmsms_breadcrumbs_inner align_left">
+            <router-link to="/home" class="cms_home">Начало</router-link>
+            <span class="breadcrumbs_sep"> / </span>
+            <router-link v-if="location === 'Капани за молци' || location === 'Къщиски за птици' || location === 'Събиране на шума' || location === 'Листоминиращ молец'" to="/our-mission" class="cms_home">Нашата мисия</router-link>
+            <span v-if="location === 'Капани за молци' || location === 'Къщиски за птици' || location === 'Събиране на шума' || location === 'Листоминиращ молец'" class="breadcrumbs_sep"> / </span>
+            <span>{{location}}</span>
+          </div>
+        </div>
+
+          <!-- Content goes here -->
+          <router-view></router-view>
+          <!-- Content goes here -->
+
+      </section>
 
     </div>
 </template>
 
 <script>
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from './components/Home.vue'
+export default {
+  name: 'App',
+  data() {
+    return {
+      location: ""
+    }
+  },
+  mounted() {
+    let that = this;
 
-Vue.use(VueRouter)
+    that.$router.afterEach((to) => {
+      that.location = to.name;
+    });
 
-const routes = [
-  { path: '/home', component: Home }
-]
-
-const router = new VueRouter({
-  routes
-})
-
-// 4. Create and mount the root instance.
-// Make sure to inject the router with the router option to make the
-// whole app router-aware.
-const app = new Vue({
-  router
-}).$mount('#app')
-
-// Now the app has started!
-
-// export default {
-//   name: 'App',
-//   components: {
-//     Middle
-//   }
-// }
+    that.location = this.$route.name;
+  }
+}
 </script>
 
 <style>
