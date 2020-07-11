@@ -150,3 +150,73 @@ gulp.task('renameRootFiles', function() {
         .pipe(htmlbeautify(options))
         .pipe(gulp.dest('./vue/our-mission/'))
 });
+
+gulp.task('extractNews', () => {
+    let counter = 0;
+
+    let all = JSON.stringify([]);
+
+    fs.writeFileSync('news.json', all, (err) => {
+        if (err) {
+            throw err;
+        }
+    });
+
+    return gulp
+        .src('./HTML/news/*.html')
+        .pipe(dom(function() {
+            counter ++;
+
+            let date, article;
+
+            let title = this.querySelector('.entry-title').innerHTML;
+
+            let dateText = this.querySelector('.published').innerHTML;
+
+            if(dateText) {
+                let dateArray = dateText.split('.');
+                date = new Date(dateArray[2], dateArray[1], dateArray[0]).toISOString();
+            }
+
+            let text = [];
+            let paragraphs = this.querySelectorAll('div.entry-content p');
+
+            let photos = [];
+            let images = this.querySelectorAll('li a');
+
+            paragraphs.forEach((el) => {
+                let content = el.innerHTML;
+
+                if(content) {
+                    text.push(content.replace(/"/g, `'`).replace(/(\r\n|\n|\r)/gm, "").trim());
+                }
+            });
+
+            images.forEach((el) => {
+                let src = el.toString();
+
+                if(src) {
+                    photos.push(src.replace('/_content/images/', ''));
+                }
+            });
+
+            article = {
+                id: counter,
+                title: title,
+                text: text,
+                photos: photos,
+                date: date
+            };
+
+            let rawdata = fs.readFileSync('news.json');
+            let allNews = JSON.parse(rawdata);
+
+            allNews.push(article);
+
+            fs.writeFileSync('news.json', JSON.stringify(allNews), (err) => {
+                if (err) {
+                    throw err;
+                }
+            });
+        }))
+});
