@@ -149,16 +149,16 @@
 
                                       <div class="inline-news">
                                           <article id="post-4121" class="post-4121 post type-post status-publish format-standard has-post-thumbnail hentry category-archive-highlights category-archive-news category-archive-events">
-                <span class="cmsms_slider_post_format_img cmsms-icon-desktop-3"></span>
+                                              <span class="cmsms_slider_post_format_img cmsms-icon-desktop-3"></span>
                                               <div class="cmsms_slider_post_cont">
-                                                  <figure class="cmsms_img_rollover_wrap preloader"><img width="580" height="460" src="images/IMG_5201-580x460.jpg" class="full-width wp-post-image" alt="Презаредихме капаните и в &#8222;Яворов&#8243;!" title="Презаредихме капаните и в &#8222;Яворов&#8243;!" />
+                                                  <figure class="cmsms_img_rollover_wrap preloader"><img width="580" height="460" src="photos/2016/07/IMG_5201-580x460.jpg" class="full-width wp-post-image" alt="Презаредихме капаните и в &#8222;Яворов&#8243;!" title="Презаредихме капаните и в &#8222;Яворов&#8243;!" />
                                                       <div class="cmsms_img_rollover">
-                                                          <a href="images/IMG_5201.jpg" rel="ilightbox[4121_5e3286cb667c7]" title="Презаредихме капаните и в &#8222;Яворов&#8243;!" class="cmsms_image_link"><span class="cmsms-icon-search-7"></span></a><a href="archive-news/traps-yavorov-2/index.html" title="Презаредихме капаните и в &#8222;Яворов&#8243;!" class="cmsms_open_link"><span class="cmsms-icon-attach-6"></span></a>
+                                                          <a href="photos/2016/07/IMG_5201.jpg" rel="ilightbox[4121_5e3286cb667c7]" title="Презаредихме капаните и в &#8222;Яворов&#8243;!" class="cmsms_image_link"><span class="cmsms-icon-search-7"></span></a><a href="/news/20" title="Презаредихме капаните и в &#8222;Яворов&#8243;!" class="cmsms_open_link"><span class="cmsms-icon-attach-6"></span></a>
                                                       </div>
                                                   </figure>
                                                   <header class="cmsms_slider_post_header entry-header">
                                                       <h3 class="cmsms_slider_post_title entry-title">
-                                                          <a href="archive-news/traps-yavorov-2/index.html">Презаредихме капаните и в ж.к. &#8222;Яворов&#8243;!</a></h3></header>
+                                                          <a href="/news/20">Презаредихме капаните и в ж.к. &#8222;Яворов&#8243;!</a></h3></header>
                                                   <div class="cmsms_slider_post_content entry-content">
                                                       <p>Презаредихме капаните и в &#8222;Яворов&#8243;! До края на лятото ни очаква още едно презареждане...</p>
                                                   </div>
@@ -172,11 +172,11 @@
                                           <article id="post-4110" class="post-4110 post type-post status-publish format-standard has-post-thumbnail hentry category-archive-highlights category-archive-news category-archive-events">
                                               <span class="cmsms_slider_post_format_img cmsms-icon-desktop-3"></span>
                                               <div class="cmsms_slider_post_cont">
-                                                  <figure class="cmsms_img_rollover_wrap preloader"><img width="580" height="460" src="images/20160602_133138-580x460.jpg" class="full-width wp-post-image" alt="Презареждане на капани в парк &#8222;Надежда&#8220;" title="Презареждане на капани в парк &#8222;Надежда&#8220;" />
-                                                      <div class="cmsms_img_rollover"><a href="images/20160602_133138.jpg" rel="ilightbox[4110_5e3286cb6b71e]" title="Презареждане на капани в парк &#8222;Надежда&#8220;" class="cmsms_image_link"><span class="cmsms-icon-search-7"></span></a><a href="archive-news/traps-2-54/index.html" title="Презареждане на капани в парк &#8222;Надежда&#8220;" class="cmsms_open_link"><span class="cmsms-icon-attach-6"></span></a></div>
+                                                  <figure class="cmsms_img_rollover_wrap preloader"><img width="580" height="460" src="photos/2016/07/20160602_133138-580x460.jpg" class="full-width wp-post-image" alt="Презареждане на капани в парк &#8222;Надежда&#8220;" title="Презареждане на капани в парк &#8222;Надежда&#8220;" />
+                                                      <div class="cmsms_img_rollover"><a href="photos/2016/07/20160602_133138.jpg" rel="ilightbox[4110_5e3286cb6b71e]" title="Презареждане на капани в парк &#8222;Надежда&#8220;" class="cmsms_image_link"><span class="cmsms-icon-search-7"></span></a><a href="/news/17" title="Презареждане на капани в парк &#8222;Надежда&#8220;" class="cmsms_open_link"><span class="cmsms-icon-attach-6"></span></a></div>
                                                   </figure>
                                                   <header class="cmsms_slider_post_header entry-header">
-                                                      <h3 class="cmsms_slider_post_title entry-title"><a href="archive-news/traps-2-54/index.html">Презареждане на капани в парк &#8222;Надежда&#8220;</a></h3></header>
+                                                      <h3 class="cmsms_slider_post_title entry-title"><a href="/news/17">Презареждане на капани в парк &#8222;Надежда&#8220;</a></h3></header>
                                                   <div class="cmsms_slider_post_content entry-content">
                                                       <p>Благодарим на Христо Желев и неговият пети клас от 54-то училище &#8222;Св. Иван Рилски&#8220;...</p>
                                                   </div>
@@ -190,11 +190,11 @@
                                           <article id="post-4106" class="post-4106 post type-post status-publish format-standard has-post-thumbnail hentry category-archive-highlights category-archive-news category-archive-events tag-129-- tag--i tag-- tag-58 tag-47 tag-38 tag-62 tag-59 tag-65 tag-60">
                                               <span class="cmsms_slider_post_format_img cmsms-icon-desktop-3"></span>
                                               <div class="cmsms_slider_post_cont">
-                                                  <figure class="cmsms_img_rollover_wrap preloader"><img width="580" height="460" src="images/20160516_184554-580x460.jpg" class="full-width wp-post-image" alt="Презаредихме капаните във Военна академия" title="Презаредихме капаните във Военна академия" />
-                                                      <div class="cmsms_img_rollover"><a href="images/20160516_184554.jpg" rel="ilightbox[4106_5e3286cb6ff06]" title="Презаредихме капаните във Военна академия" class="cmsms_image_link"><span class="cmsms-icon-search-7"></span></a><a href="archive-news/traps-reload-129/index.html" title="Презаредихме капаните във Военна академия" class="cmsms_open_link"><span class="cmsms-icon-attach-6"></span></a></div>
+                                                  <figure class="cmsms_img_rollover_wrap preloader"><img width="580" height="460" src="photos/2016/05/20160516_184554-580x460.jpg" class="full-width wp-post-image" alt="Презаредихме капаните във Военна академия" title="Презаредихме капаните във Военна академия" />
+                                                      <div class="cmsms_img_rollover"><a href="photos/2016/05/20160516_184554.jpg" rel="ilightbox[4106_5e3286cb6ff06]" title="Презаредихме капаните във Военна академия" class="cmsms_image_link"><span class="cmsms-icon-search-7"></span></a><a href="/news/19" title="Презаредихме капаните във Военна академия" class="cmsms_open_link"><span class="cmsms-icon-attach-6"></span></a></div>
                                                   </figure>
                                                   <header class="cmsms_slider_post_header entry-header">
-                                                      <h3 class="cmsms_slider_post_title entry-title"><a href="archive-news/traps-reload-129/index.html">Презаредихме капаните във Военна академия</a></h3></header>
+                                                      <h3 class="cmsms_slider_post_title entry-title"><a href="/news/19">Презаредихме капаните във Военна академия</a></h3></header>
                                                   <div class="cmsms_slider_post_content entry-content">
                                                       <p>Хиляди благодарности на приятелите на кестените от парка на Военна академия...</p>
                                                   </div>

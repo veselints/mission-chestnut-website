@@ -84,7 +84,7 @@
       </header>
 
       <section id="middle">
-        <div class="headline cmsms_color_scheme_default">
+        <div v-bind:class="{ low: location !== '' }" class="headline cmsms_color_scheme_default">
           <div class="headline_outer">
             <div class="headline_color"></div>
             <div class="headline_inner align_left">
@@ -95,7 +95,7 @@
             </div>
           </div>
         </div>
-        <div class="cmsms_breadcrumbs">
+        <div v-if="location !== ''" class="cmsms_breadcrumbs">
           <div class="cmsms_breadcrumbs_inner align_left">
             <router-link to="/home" class="cms_home">Начало</router-link>
             <span class="breadcrumbs_sep"> / </span>

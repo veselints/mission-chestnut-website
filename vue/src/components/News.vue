@@ -1,7 +1,6 @@
 <template>
   <div class="middle_inner">
     <section class="content_wrap r_sidebar">
-        <!--_________________________ Start Content _________________________ -->
         <div class="content entry" role="main">
             <div id="cmsms_row_5e3286f516389" class="cmsms_row cmsms_color_scheme_default">
                 <div class="cmsms_row_outer_parent">
@@ -11,897 +10,60 @@
                                 <div class="cmsms_column one_first">
                                     <div class="cmsms_wrap_blog entry-summary" id="blog_5e3286f5165a6" data-meta="date,categories,author,more">
                                         <div class="blog standard">
-                                            <!--_________________________ Start Standard Article _________________________ -->
-                                            <article id="post-4121" class="post-4121 post type-post status-publish format-standard has-post-thumbnail hentry category-archive-highlights category-archive-news category-archive-events cmsms_default_type">
+                                            <article v-for="post in allNews" :key="post.id"
+                                                    class="post type-post status-publish format-standard has-post-thumbnail hentry category-archive-highlights category-archive-news category-archive-events cmsms_default_type">
                                                 <div class="cmsms_post_info entry-meta">
-                                                    <span class="cmsms_post_format_img  cmsms-icon-desktop-3"></span>
-                                                    <abbr class="published cmsms_post_date" title="10.07.2016">
-                                                        <span class="cmsms_day_mon">10.07</span>
-                                                        <span class="cmsms_year">2016</span>
-                                                    </abbr>
-                                                    <abbr class="dn date updated" title="10.07.2016">10.07.2016</abbr>
+                                                    <span v-if="!post.type" class="cmsms_post_format_img cmsms-icon-desktop-3"></span>
+                                                    <span v-if="post.type === 'link'" class="cmsms_post_format_img cmsms-icon-globe-6"></span>
+                                                    <span v-if="post.type === 'audio'" class="cmsms_post_format_img  cmsms-icon-music-4"></span>
+                                                    <abbr class="published cmsms_post_date" 
+                                                        :title="post.date" v-text="getDate(post.date)"></abbr>
                                                 </div>
                                                 <div class="cmsms_post_cont">
-                                                    <figure>
-                                                        <a href="/news/traps-yavorov-2/index.html" title="Презаредихме капаните и в „Яворов″!" class="cmsms_img_link preloader">
-                                                            <img width="820" height="490" src="/_content/images/2016/07/IMG_5201-820x490.jpg" class="full-width wp-post-image" alt="Презаредихме капаните и в „Яворов″!" title="Презаредихме капаните и в „Яворов″!">
+                                                    <figure v-if="!post.type && post.photos.length">
+                                                        <a :href="'/news/' + post.id" 
+                                                            :title="post.title" 
+                                                            class="cmsms_img_link preloader">
+                                                            <img width="820" 
+                                                                height="490"
+                                                                class="full-width wp-post-image"  
+                                                                :src="'photos/' + post.photos[0]" 
+                                                                :alt="post.title">
                                                         </a>
                                                     </figure>
-                                                    <header class="cmsms_post_header entry-header">
-                                                        <h1 class="cmsms_post_title entry-title">
-                                                            <a href="/news/traps-yavorov-2/index.html">Презаредихме капаните и в „Яворов″!</a>
-                                                        </h1>
-                                                    </header>
-                                                    <div class="cmsms_post_content entry-content">
-                                                        <p>Презаредихме капаните и в „Яворов″! До края на лятото ни очаква още едно презареждане, ура!</p>
+                                                    <div v-if="post.type === 'video'" class="cmsms_video_wrap">
+                                                        <iframe width="820" 
+                                                                height="461" 
+                                                                :src="post.link" 
+                                                                frameborder="0" 
+                                                                allowfullscreen=""></iframe>
                                                     </div>
-                                                    <footer class="cmsms_post_footer entry-meta">
-                                                        <a class="button cmsms_post_read_more" href="/news/traps-yavorov-2/index.html">Още</a>
-                                                    </footer>
-                                                </div>
-                                            </article>
-                                            <!--_________________________ Finish Standard Article _________________________ -->
-                                            <!--_________________________ Start Standard Article _________________________ -->
-                                            <article id="post-4110" class="post-4110 post type-post status-publish format-standard has-post-thumbnail hentry category-archive-highlights category-archive-news category-archive-events cmsms_default_type">
-                                                <div class="cmsms_post_info entry-meta">
-                                                    <span class="cmsms_post_format_img  cmsms-icon-desktop-3"></span>
-                                                    <abbr class="published cmsms_post_date" title="10.07.2016">
-                                                        <span class="cmsms_day_mon">10.07</span>
-                                                        <span class="cmsms_year">2016</span>
-                                                    </abbr>
-                                                    <abbr class="dn date updated" title="10.07.2016">10.07.2016</abbr>
-                                                </div>
-                                                <div class="cmsms_post_cont">
-                                                    <figure>
-                                                        <a href="/news/traps-2-54/index.html" title="Презареждане на капани в парк „Надежда“" class="cmsms_img_link preloader">
-                                                            <img width="820" height="490" src="/_content/images/2016/07/20160602_133138-820x490.jpg" class="full-width wp-post-image" alt="Презареждане на капани в парк „Надежда“" title="Презареждане на капани в парк „Надежда“">
-                                                        </a>
-                                                    </figure>
                                                     <header class="cmsms_post_header entry-header">
                                                         <h1 class="cmsms_post_title entry-title">
-                                                            <a href="/news/traps-2-54/index.html">Презареждане на капани в парк „Надежда“</a>
+                                                            <a v-if="!post.type" :href="'/news/' + post.id">{{post.title}}</a>
+                                                            <a v-if="post.type === 'link'" :href="post.link">{{post.title}}</a>
+                                                            <span v-if="post.type === 'audio' || post.type === 'video'">{{post.title}}</span>
                                                         </h1>
+                                                        <h5 v-if="post.type === 'link'" 
+                                                            class="cmsms_post_subtitle">{{post.link}}</h5>
                                                     </header>
-                                                    <div class="cmsms_post_content entry-content">
-                                                        <p>Благодарим на Христо Желев и неговият пети клас от 54-то училище „Св. Иван Рилски“. Те презаредиха с феромонни примамки поставените в парк „Надежда“ капани и...</p>
-                                                    </div>
-                                                    <footer class="cmsms_post_footer entry-meta">
-                                                        <a class="button cmsms_post_read_more" href="/news/traps-2-54/index.html">Още</a>
-                                                    </footer>
-                                                </div>
-                                            </article>
-                                            <!--_________________________ Finish Standard Article _________________________ -->
-                                            <!--_________________________ Start Standard Article _________________________ -->
-                                            <article id="post-4106" class="post-4106 post type-post status-publish format-standard has-post-thumbnail hentry category-archive-highlights category-archive-news category-archive-events tag-129-- tag--i tag-- tag-58 tag-47 tag-38 tag-62 tag-59 tag-65 tag-60 cmsms_default_type">
-                                                <div class="cmsms_post_info entry-meta">
-                                                    <span class="cmsms_post_format_img  cmsms-icon-desktop-3"></span>
-                                                    <abbr class="published cmsms_post_date" title="18.05.2016">
-                                                        <span class="cmsms_day_mon">18.05</span>
-                                                        <span class="cmsms_year">2016</span>
-                                                    </abbr>
-                                                    <abbr class="dn date updated" title="18.05.2016">18.05.2016</abbr>
-                                                </div>
-                                                <div class="cmsms_post_cont">
-                                                    <figure>
-                                                        <a href="/news/traps-reload-129/index.html" title="Презаредихме капаните във Военна академия" class="cmsms_img_link preloader">
-                                                            <img width="820" height="490" src="/_content/images/2016/05/20160516_184554-820x490.jpg" class="full-width wp-post-image" alt="Презаредихме капаните във Военна академия" title="Презаредихме капаните във Военна академия">
-                                                        </a>
-                                                    </figure>
-                                                    <header class="cmsms_post_header entry-header">
-                                                        <h1 class="cmsms_post_title entry-title">
-                                                            <a href="/news/traps-reload-129/index.html">Презаредихме капаните във Военна академия</a>
-                                                        </h1>
-                                                    </header>
-                                                    <div class="cmsms_post_content entry-content">
-                                                        <p>Хиляди благодарности на приятелите на кестените от парка на Военна академия! Този понеделник децата от 5А клас от 129 училище „Антим I“ и тяхната класна...</p>
-                                                    </div>
-                                                    <footer class="cmsms_post_footer entry-meta">
-                                                        <a class="button cmsms_post_read_more" href="/news/traps-reload-129/index.html">Още</a>
-                                                    </footer>
-                                                </div>
-                                            </article>
-                                            <!--_________________________ Finish Standard Article _________________________ -->
-                                            <!--_________________________ Start Standard Article _________________________ -->
-                                            <article id="post-4093" class="post-4093 post type-post status-publish format-standard has-post-thumbnail hentry category-archive-highlights category-archive-news category-archive-events tag-58 tag-38 tag-59 tag-61 tag-60 tag-57 cmsms_default_type">
-                                                <div class="cmsms_post_info entry-meta">
-                                                    <span class="cmsms_post_format_img  cmsms-icon-desktop-3"></span>
-                                                    <abbr class="published cmsms_post_date" title="27.04.2016">
-                                                        <span class="cmsms_day_mon">27.04</span>
-                                                        <span class="cmsms_year">2016</span>
-                                                    </abbr>
-                                                    <abbr class="dn date updated" title="27.04.2016">27.04.2016</abbr>
-                                                </div>
-                                                <div class="cmsms_post_cont">
-                                                    <figure>
-                                                        <a href="/news/traps-yavorov-n1-2016/index.html" title="Закачихме капаните в Яворов" class="cmsms_img_link preloader">
-                                                            <img width="820" height="490" src="/_content/images/2016/04/image-2-820x490.jpg" class="full-width wp-post-image" alt="Закачихме капаните в Яворов" title="Закачихме капаните в Яворов">
-                                                        </a>
-                                                    </figure>
-                                                    <header class="cmsms_post_header entry-header">
-                                                        <h1 class="cmsms_post_title entry-title">
-                                                            <a href="/news/traps-yavorov-n1-2016/index.html">Закачихме капаните в Яворов</a>
-                                                        </h1>
-                                                    </header>
-                                                    <div class="cmsms_post_content entry-content">
-                                                        <p>Приятели! Благодарим на всички които ни помогнаха да направим и наслагаме капаните в акцията а 17 април в ж.к. Яворов. Благодарение на Райфайзен банк, нейите...</p>
-                                                    </div>
-                                                    <footer class="cmsms_post_footer entry-meta">
-                                                        <a class="button cmsms_post_read_more" href="/news/traps-yavorov-n1-2016/index.html">Още</a>
-                                                    </footer>
-                                                </div>
-                                            </article>
-                                            <!--_________________________ Finish Standard Article _________________________ -->
-                                            <!--_________________________ Start Standard Article _________________________ -->
-                                            <article id="post-4078" class="post-4078 post type-post status-publish format-standard has-post-thumbnail hentry category-archive-highlights category-archive-news category-archive-events tag--i tag-38 tag-- tag--- tag-52 cmsms_default_type">
-                                                <div class="cmsms_post_info entry-meta">
-                                                    <span class="cmsms_post_format_img  cmsms-icon-desktop-3"></span>
-                                                    <abbr class="published cmsms_post_date" title="27.04.2016">
-                                                        <span class="cmsms_day_mon">27.04</span>
-                                                        <span class="cmsms_year">2016</span>
-                                                    </abbr>
-                                                    <abbr class="dn date updated" title="27.04.2016">27.04.2016</abbr>
-                                                </div>
-                                                <div class="cmsms_post_cont">
-                                                    <figure>
-                                                        <a href="/news/traps-kids-n1-2016/index.html" title="Закачихме капаните с децата от 54-то и 129-то училище" class="cmsms_img_link preloader">
-                                                            <img width="820" height="490" src="/_content/images/2016/04/20160421_132847-820x490.jpg" class="full-width wp-post-image" alt="Закачихме капаните с децата от 54-то и 129-то училище" title="Закачихме капаните с децата от 54-то и 129-то училище">
-                                                        </a>
-                                                    </figure>
-                                                    <header class="cmsms_post_header entry-header">
-                                                        <h1 class="cmsms_post_title entry-title">
-                                                            <a href="/news/traps-kids-n1-2016/index.html">Закачихме капаните с децата от 54-то и 129-то училище</a>
-                                                        </h1>
-                                                    </header>
-                                                    <div class="cmsms_post_content entry-content">
-                                                        <p>Прекрасната инициатива на Райфайзен банк и нейните служители „Избери, за да помогнеш“ допринесе за продължаване на благородната кауза на „Мисия Кестен“. Благодарение на усилията на...</p>
-                                                    </div>
-                                                    <footer class="cmsms_post_footer entry-meta">
-                                                        <a class="button cmsms_post_read_more" href="/news/traps-kids-n1-2016/index.html">Още</a>
-                                                    </footer>
-                                                </div>
-                                            </article>
-                                            <!--_________________________ Finish Standard Article _________________________ -->
-                                            <!--_________________________ Start Standard Article _________________________ -->
-                                            <article id="post-4064" class="post-4064 post type-post status-publish format-standard has-post-thumbnail hentry category-archive-highlights category-archive-events tag-54- tag-- tag-38 tag-36 tag-34 tag-40 tag-39 tag-37 tag-35 cmsms_default_type">
-                                                <div class="cmsms_post_info entry-meta">
-                                                    <span class="cmsms_post_format_img  cmsms-icon-desktop-3"></span>
-                                                    <abbr class="published cmsms_post_date" title="28.02.2016">
-                                                        <span class="cmsms_day_mon">28.02</span>
-                                                        <span class="cmsms_year">2016</span>
-                                                    </abbr>
-                                                    <abbr class="dn date updated" title="28.02.2016">28.02.2016</abbr>
-                                                </div>
-                                                <div class="cmsms_post_cont">
-                                                    <figure>
-                                                        <a href="/news/bird-houses-nadejda/index.html" title="Къщички за синигери и в парк „Надежда“" class="cmsms_img_link preloader">
-                                                            <img width="820" height="490" src="/_content/images/2016/02/20160218_123234-820x490.jpg" class="full-width wp-post-image" alt="Къщички за синигери и в парк „Надежда“" title="Къщички за синигери и в парк „Надежда“">
-                                                        </a>
-                                                    </figure>
-                                                    <header class="cmsms_post_header entry-header">
-                                                        <h1 class="cmsms_post_title entry-title">
-                                                            <a href="/news/bird-houses-nadejda/index.html">Къщички за синигери и в парк „Надежда“</a>
-                                                        </h1>
-                                                    </header>
-                                                    <div class="cmsms_post_content entry-content">
-                                                        <p>С радост искаме да ви съобщим, че през изминалата седмица, заедно с децата от 5-ти клас на 54-то СОУ „Св. Иван Рилски“ и техният прекрасен...</p>
-                                                    </div>
-                                                    <footer class="cmsms_post_footer entry-meta">
-                                                        <a class="button cmsms_post_read_more" href="/news/bird-houses-nadejda/index.html">Още</a>
-                                                    </footer>
-                                                </div>
-                                            </article>
-                                            <!--_________________________ Finish Standard Article _________________________ -->
-                                            <!--_________________________ Start Standard Article _________________________ -->
-                                            <article id="post-4049" class="post-4049 post type-post status-publish format-standard has-post-thumbnail hentry category-archive-highlights category-archive-news tag-x-raiffeisen tag-44 tag-45 tag---- tag-47 tag-38 tag-46 cmsms_default_type">
-                                                <div class="cmsms_post_info entry-meta">
-                                                    <span class="cmsms_post_format_img  cmsms-icon-desktop-3"></span>
-                                                    <abbr class="published cmsms_post_date" title="05.02.2016">
-                                                        <span class="cmsms_day_mon">05.02</span>
-                                                        <span class="cmsms_year">2016</span>
-                                                    </abbr>
-                                                    <abbr class="dn date updated" title="28.02.2016">28.02.2016</abbr>
-                                                </div>
-                                                <div class="cmsms_post_cont">
-                                                    <figure>
-                                                        <a href="/news/ceremonyrfb/index.html" title="Инициативата „Избери, за да помогнеш“ на Райфайзенбанк подкрепи Мисия Кестен" class="cmsms_img_link preloader">
-                                                            <img width="820" height="490" src="/_content/images/2016/02/DSC_8347-820x490.jpg" class="full-width wp-post-image" alt="Инициативата „Избери, за да помогнеш“ на Райфайзенбанк подкрепи Мисия Кестен" title="Инициативата „Избери, за да помогнеш“ на Райфайзенбанк подкрепи Мисия Кестен">
-                                                        </a>
-                                                    </figure>
-                                                    <header class="cmsms_post_header entry-header">
-                                                        <h1 class="cmsms_post_title entry-title">
-                                                            <a href="/news/ceremonyrfb/index.html">Инициативата „Избери, за да помогнеш“ на Райфайзенбанк подкрепи Мисия Кестен</a>
-                                                        </h1>
-                                                    </header>
-                                                    <div class="cmsms_post_content entry-content">
-                                                        <p>„Мисия Кестен“ беше подкрепена в рамките на седмата&nbsp; благотворителна кампания „Избери, за да помогнеш“ на Райфайзенбанк България. На 3-ти февруари, на официална церемония, символичните чекове...</p>
-                                                    </div>
-                                                    <footer class="cmsms_post_footer entry-meta">
-                                                        <a class="button cmsms_post_read_more" href="/news/ceremonyrfb/index.html">Още</a>
-                                                    </footer>
-                                                </div>
-                                            </article>
-                                            <!--_________________________ Finish Standard Article _________________________ -->
-                                            <!--_________________________ Start Standard Article _________________________ -->
-                                            <article id="post-4062" class="post-4062 post type-post status-publish format-standard has-post-thumbnail hentry category-archive-highlights category-archive-events tag-akropol-bg tag-kesteni tag-38 tag-50 tag-51 cmsms_default_type">
-                                                <div class="cmsms_post_info entry-meta">
-                                                    <span class="cmsms_post_format_img  cmsms-icon-desktop-3"></span>
-                                                    <abbr class="published cmsms_post_date" title="28.10.2015">
-                                                        <span class="cmsms_day_mon">28.10</span>
-                                                        <span class="cmsms_year">2015</span>
-                                                    </abbr>
-                                                    <abbr class="dn date updated" title="28.02.2016">28.02.2016</abbr>
-                                                </div>
-                                                <div class="cmsms_post_cont">
-                                                    <figure>
-                                                        <a href="/news/acropol-yavorov/index.html" title="Новият Акропол отново ни помогна!" class="cmsms_img_link preloader">
-                                                            <img width="820" height="490" src="/_content/images/2016/02/2015-10-ekodobrovoltsi-kesteni-1-site-820x490.png" class="full-width wp-post-image" alt="Новият Акропол отново ни помогна!" title="Новият Акропол отново ни помогна!">
-                                                        </a>
-                                                    </figure>
-                                                    <header class="cmsms_post_header entry-header">
-                                                        <h1 class="cmsms_post_title entry-title">
-                                                            <a href="/news/acropol-yavorov/index.html">Новият Акропол отново ни помогна!</a>
-                                                        </h1>
-                                                    </header>
-                                                    <div class="cmsms_post_content entry-content">
-                                                        <p>Заедно с нашите приятели доброволците от Новия Акропол успяхме да съберем над 200 чувала на организираното събиране в на кестенови листа в ж.к. Яворов! Продължаваме...</p>
-                                                    </div>
-                                                    <footer class="cmsms_post_footer entry-meta">
-                                                        <a class="button cmsms_post_read_more" href="/news/acropol-yavorov/index.html">Още</a>
-                                                    </footer>
-                                                </div>
-                                            </article>
-                                            <!--_________________________ Finish Standard Article _________________________ -->
-                                            <!--_________________________ Start Standard Article _________________________ -->
-                                            <article id="post-4074" class="post-4074 post type-post status-publish format-standard has-post-thumbnail hentry category-archive-highlights category-archive-events tag-54- tag-- tag-38 tag-36 tag-41 tag-40 tag-39 tag-37 cmsms_default_type">
-                                                <div class="cmsms_post_info entry-meta">
-                                                    <span class="cmsms_post_format_img  cmsms-icon-desktop-3"></span>
-                                                    <abbr class="published cmsms_post_date" title="28.06.2015">
-                                                        <span class="cmsms_day_mon">28.06</span>
-                                                        <span class="cmsms_year">2015</span>
-                                                    </abbr>
-                                                    <abbr class="dn date updated" title="28.02.2016">28.02.2016</abbr>
-                                                </div>
-                                                <div class="cmsms_post_cont">
-                                                    <figure>
-                                                        <a href="/news/sglobqvane54/index.html" title="Сглобихме пет къщички с децата от 54-то СОУ „Св. Иван Рилски“" class="cmsms_img_link preloader">
-                                                            <img width="820" height="490" src="/_content/images/2016/02/2015-06-10-12.47.56-820x490.jpg" class="full-width wp-post-image" alt="Сглобихме пет къщички с децата от 54-то СОУ „Св. Иван Рилски“" title="Сглобихме пет къщички с децата от 54-то СОУ „Св. Иван Рилски“">
-                                                        </a>
-                                                    </figure>
-                                                    <header class="cmsms_post_header entry-header">
-                                                        <h1 class="cmsms_post_title entry-title">
-                                                            <a href="/news/sglobqvane54/index.html">Сглобихме пет къщички с децата от 54-то СОУ „Св. Иван Рилски“</a>
-                                                        </h1>
-                                                    </header>
-                                                    <div class="cmsms_post_content entry-content">
-                                                        <p>По време на празника на науката в 54-то СОУ „Св. Иван Рилски“ заедно с учениците сглобихме 5 къщички за синигери. Благодарности на Христо Желев за...</p>
-                                                    </div>
-                                                    <footer class="cmsms_post_footer entry-meta">
-                                                        <a class="button cmsms_post_read_more" href="/news/sglobqvane54/index.html">Още</a>
-                                                    </footer>
-                                                </div>
-                                            </article>
-                                            <!--_________________________ Finish Standard Article _________________________ -->
-                                            <!--_________________________ Start Standard Article _________________________ -->
-                                            <article id="post-4018" class="post-4018 post type-post status-publish format-standard has-post-thumbnail hentry category-archive-highlights category-archive-news cmsms_default_type">
-                                                <div class="cmsms_post_info entry-meta">
-                                                    <span class="cmsms_post_format_img  cmsms-icon-desktop-3"></span>
-                                                    <abbr class="published cmsms_post_date" title="18.11.2014">
-                                                        <span class="cmsms_day_mon">18.11</span>
-                                                        <span class="cmsms_year">2014</span>
-                                                    </abbr>
-                                                    <abbr class="dn date updated" title="02.12.2014">02.12.2014</abbr>
-                                                </div>
-                                                <div class="cmsms_post_cont">
-                                                    <figure>
-                                                        <a href="/news/54-sou/index.html" title="И 54-то СОУ се включи в „Мисия Кестен“" class="cmsms_img_link preloader">
-                                                            <img width="820" height="490" src="/_content/images/2014/11/IMG_0174-820x490.jpg" class="full-width wp-post-image" alt="И 54-то СОУ се включи в „Мисия Кестен“" title="И 54-то СОУ се включи в „Мисия Кестен“">
-                                                        </a>
-                                                    </figure>
-                                                    <header class="cmsms_post_header entry-header">
-                                                        <h1 class="cmsms_post_title entry-title">
-                                                            <a href="/news/54-sou/index.html">И 54-то СОУ се включи в „Мисия Кестен“</a>
-                                                        </h1>
-                                                    </header>
-                                                    <div class="cmsms_post_content entry-content">
-                                                        <p>С радост ви съобщаваме, че имаме ново училище, сподвижник на нашата Мисия. Това е 54-то СОУ „Свети Иван Рилски“, ж.к. „Лев Толстой″. Благодарение на усилията...</p>
-                                                    </div>
-                                                    <footer class="cmsms_post_footer entry-meta">
-                                                        <a class="button cmsms_post_read_more" href="/news/54-sou/index.html">Още</a>
-                                                    </footer>
-                                                </div>
-                                            </article>
-                                            <!--_________________________ Finish Standard Article _________________________ -->
-                                            <!--_________________________ Start Link Article _________________________ -->
-                                            <article id="post-4012" class="post-4012 post type-post status-publish format-link hentry category-archive-news cmsms_default_type">
-                                                <div class="cmsms_post_info entry-meta">
-                                                    <span class="cmsms_post_format_img  cmsms-icon-globe-6"></span>
-                                                    <abbr class="published cmsms_post_date" title="18.11.2014">
-                                                        <span class="cmsms_day_mon">18.11</span>
-                                                        <span class="cmsms_year">2014</span>
-                                                    </abbr>
-                                                    <abbr class="dn date updated" title="02.12.2014">02.12.2014</abbr>
-                                                </div>
-                                                <div class="cmsms_post_cont">
-                                                    <header class="cmsms_post_header entry-header">
-                                                        <h1 class="cmsms_post_title entry-title">
-                                                            <a href="http://akropol.bg/pomosht-na-kestenite/" target="_blank">"Новият акропол" в помощ на кестените</a>
-                                                        </h1>
-                                                        <h5 class="cmsms_post_subtitle">http://akropol.bg/pomosht-na-kestenite/</h5>
-                                                    </header>
-                                                    <div class="cmsms_post_content entry-content">
-                                                        <p>За втора поредна година доброволците от международната организация „Новият акропол“ помогнаха на кестените в софийски парк. Догодина пак!</p>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                            <!--_________________________ Finish Link Article _________________________ -->
-                                            <!--_________________________ Start Standard Article _________________________ -->
-                                            <article id="post-4004" class="post-4004 post type-post status-publish format-standard has-post-thumbnail hentry category-archive-highlights category-archive-news cmsms_default_type">
-                                                <div class="cmsms_post_info entry-meta">
-                                                    <span class="cmsms_post_format_img  cmsms-icon-desktop-3"></span>
-                                                    <abbr class="published cmsms_post_date" title="03.11.2014">
-                                                        <span class="cmsms_day_mon">03.11</span>
-                                                        <span class="cmsms_year">2014</span>
-                                                    </abbr>
-                                                    <abbr class="dn date updated" title="02.12.2014">02.12.2014</abbr>
-                                                </div>
-                                                <div class="cmsms_post_cont">
-                                                    <figure>
-                                                        <a href="/news/drujba-help/index.html" title="Дружбенска помощ" class="cmsms_img_link preloader">
-                                                            <img width="820" height="490" src="/_content/images/2014/11/IMG_20141101_123210953_HDR-820x490.jpg" class="full-width wp-post-image" alt="Дружбенска помощ" title="Дружбенска помощ">
-                                                        </a>
-                                                    </figure>
-                                                    <header class="cmsms_post_header entry-header">
-                                                        <h1 class="cmsms_post_title entry-title">
-                                                            <a href="/news/drujba-help/index.html">Дружбенска помощ</a>
-                                                        </h1>
-                                                    </header>
-                                                    <div class="cmsms_post_content entry-content">
-                                                        <p>На деня на Народните будители, заедно с доброволците от bwin.party services събудихме любопитството&nbsp;на жителите на ж.к. „Дружба“ със старателна акция по почистване на окапалата от...</p>
-                                                    </div>
-                                                    <footer class="cmsms_post_footer entry-meta">
-                                                        <a class="button cmsms_post_read_more" href="/news/drujba-help/index.html">Още</a>
-                                                    </footer>
-                                                </div>
-                                            </article>
-                                            <!--_________________________ Finish Standard Article _________________________ -->
-                                            <!--_________________________ Start Standard Article _________________________ -->
-                                            <article id="post-4000" class="post-4000 post type-post status-publish format-standard hentry category-archive-interviews category-archive-news cmsms_default_type">
-                                                <div class="cmsms_post_info entry-meta">
-                                                    <span class="cmsms_post_format_img  cmsms-icon-globe-6"></span>
-                                                    <abbr class="published cmsms_post_date" title="25.10.2014">
-                                                        <span class="cmsms_day_mon">25.10</span>
-                                                        <span class="cmsms_year">2014</span>
-                                                    </abbr>
-                                                    <abbr class="dn date updated" title="02.12.2014">02.12.2014</abbr>
-                                                </div>
-                                                <div class="cmsms_post_cont">
-                                                    <header class="cmsms_post_header entry-header">
-                                                        <h1 class="cmsms_post_title entry-title">
-                                                            <a href="http://www.btv.bg/video/shows/predi-obed/videos/uchenici-spasjavat-kestenite-v-sofija-ot-izchezvane.html" target="_blank">„Мисия Кестен“ – продължението</a>
-                                                        </h1>
-                                                        <h5 class="cmsms_post_subtitle">http://www.btv.bg/video/shows/predi-obed/videos/uchenici-spasjavat-kestenite-v-sofija-ot-izchezvane.html</h5>
-                                                    </header>
-                                                    <div class="cmsms_post_content entry-content">
-                                                        <p>Въпреки, че анонсираният срок на нашия скромен проект приключи, с удоволствие Ви съобщаваме, че Мисия Кестен намери своите упорити сподвижници! Този петък, 24-ти октомври, децата от училището към руското посолство старателно почистиха от кестенови листа двора на своето училище. Дано да е за добро!</p>
-                                                        <p>За това как се справиха децата можете да научите от предаването „Преди обед“ на btv.</p>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                            <!--_________________________ Finish Standard Article _________________________ -->
-                                            <!--_________________________ Start Standard Article _________________________ -->
-                                            <article id="post-3998" class="post-3998 post type-post status-publish format-standard has-post-thumbnail hentry category-archive-highlights category-archive-news cmsms_default_type">
-                                                <div class="cmsms_post_info entry-meta">
-                                                    <span class="cmsms_post_format_img  cmsms-icon-desktop-3"></span>
-                                                    <abbr class="published cmsms_post_date" title="15.06.2014">
-                                                        <span class="cmsms_day_mon">15.06</span>
-                                                        <span class="cmsms_year">2014</span>
-                                                    </abbr>
-                                                    <abbr class="dn date updated" title="02.12.2014">02.12.2014</abbr>
-                                                </div>
-                                                <div class="cmsms_post_cont">
-                                                    <figure>
-                                                        <a href="/news/moth-traps/index.html" title="Капани за молци" class="cmsms_img_link preloader">
-                                                            <img width="820" height="490" src="/_content/images/2014/11/10264936_813052318723700_1186606759626286569_n-820x490.jpg" class="full-width wp-post-image" alt="Капани за молци" title="Капани за молци">
-                                                        </a>
-                                                    </figure>
-                                                    <header class="cmsms_post_header entry-header">
-                                                        <h1 class="cmsms_post_title entry-title">
-                                                            <a href="/news/moth-traps/index.html">Капани за молци</a>
-                                                        </h1>
-                                                    </header>
-                                                    <div class="cmsms_post_content entry-content">
-                                                        <p>Благодарим на всички за усърдието при правенето и закачането на капаните за молци! Благодарим на 19-то училище „Елен Пелин“, с което наслагахме и презаредихме капаните...</p>
-                                                    </div>
-                                                    <footer class="cmsms_post_footer entry-meta">
-                                                        <a class="button cmsms_post_read_more" href="/news/moth-traps/index.html">Oще</a>
-                                                    </footer>
-                                                </div>
-                                            </article>
-                                            <!--_________________________ Finish Standard Article _________________________ -->
-                                            <!--_________________________ Start Link Article _________________________ -->
-                                            <article id="post-3465" class="post-3465 post type-post status-publish format-link hentry category-archive-press-news cmsms_default_type">
-                                                <div class="cmsms_post_info entry-meta">
-                                                    <span class="cmsms_post_format_img  cmsms-icon-globe-6"></span>
-                                                    <abbr class="published cmsms_post_date" title="04.03.2014">
-                                                        <span class="cmsms_day_mon">04.03</span>
-                                                        <span class="cmsms_year">2014</span>
-                                                    </abbr>
-                                                    <abbr class="dn date updated" title="02.12.2014">02.12.2014</abbr>
-                                                </div>
-                                                <div class="cmsms_post_cont">
-                                                    <header class="cmsms_post_header entry-header">
-                                                        <h1 class="cmsms_post_title entry-title">
-                                                            <a href="http://binar.bg/2525/v-predavaneto-sledobeden-binar-s-antoniya-na-29-09-2013/" target="_blank">"Мисия Кестен" в радио Бинар на БНР</a>
-                                                        </h1>
-                                                        <h5 class="cmsms_post_subtitle">http://binar.bg/2525/v-predavaneto-sledobeden-binar-s-antoniya-na-29-09-2013/</h5>
-                                                    </header>
-                                                    <div class="cmsms_post_content entry-content">
-                                                        <p>На националния празник Мисия Кестен беше в радио Бинар на БНР.</p>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                            <!--_________________________ Finish Link Article _________________________ -->
-                                            <!--_________________________ Start Standard Article _________________________ -->
-                                            <article id="post-3907" class="post-3907 post type-post status-publish format-standard has-post-thumbnail hentry category-archive-highlights category-archive-news cmsms_default_type">
-                                                <div class="cmsms_post_info entry-meta">
-                                                    <span class="cmsms_post_format_img  cmsms-icon-desktop-3"></span>
-                                                    <abbr class="published cmsms_post_date" title="01.03.2014">
-                                                        <span class="cmsms_day_mon">01.03</span>
-                                                        <span class="cmsms_year">2014</span>
-                                                    </abbr>
-                                                    <abbr class="dn date updated" title="02.12.2014">02.12.2014</abbr>
-                                                </div>
-                                                <div class="cmsms_post_cont">
-                                                    <figure>
-                                                        <a href="/news/bird-houses/index.html" title="Закачихме къщичките за синигери!" class="cmsms_img_link preloader">
-                                                            <img width="820" height="490" src="/_content/images/2014/11/1604597_783689768326622_395007131_n-820x490.jpg" class="full-width wp-post-image" alt="Закачихме къщичките за синигери!" title="Закачихме къщичките за синигери!">
-                                                        </a>
-                                                    </figure>
-                                                    <header class="cmsms_post_header entry-header">
-                                                        <h1 class="cmsms_post_title entry-title">
-                                                            <a href="/news/bird-houses/index.html">Закачихме къщичките за синигери!</a>
-                                                        </h1>
-                                                    </header>
-                                                    <div class="cmsms_post_content entry-content">
-                                                        <p>Вчера бе последната ни акция по поставяне на къщички за синигери в Борисова градина, така на територията на шест градски градини в София, вече има...</p>
-                                                    </div>
-                                                    <footer class="cmsms_post_footer entry-meta">
-                                                        <a class="button cmsms_post_read_more" href="/news/bird-houses/index.html">Oще</a>
-                                                    </footer>
-                                                </div>
-                                            </article>
-                                            <!--_________________________ Finish Standard Article _________________________ -->
-                                            <!--_________________________ Start Standard Article _________________________ -->
-                                            <article id="post-3463" class="post-3463 post type-post status-publish format-standard hentry category-archive-press-news cmsms_default_type">
-                                                <div class="cmsms_post_info entry-meta">
-                                                    <span class="cmsms_post_format_img  cmsms-icon-desktop-3"></span>
-                                                    <abbr class="published cmsms_post_date" title="01.02.2014">
-                                                        <span class="cmsms_day_mon">01.02</span>
-                                                        <span class="cmsms_year">2014</span>
-                                                    </abbr>
-                                                    <abbr class="dn date updated" title="02.12.2014">02.12.2014</abbr>
-                                                </div>
-                                                <div class="cmsms_post_cont">
-                                                    <header class="cmsms_post_header entry-header">
-                                                        <h1 class="cmsms_post_title entry-title">
-                                                            <a href="/news/mission-chestnut-continue/index.html">„Мисия Кестен“ продължава!</a>
-                                                        </h1>
-                                                    </header>
-                                                    <div class="cmsms_post_content entry-content">
-                                                        <p>Пролетта е вече тук! Настъпи време нашата „Мисия Кестен” да се погрижи за софийските кестени, с поставянето на къщички за синигери! Къде? Учениците от 19...</p>
-                                                    </div>
-                                                    <footer class="cmsms_post_footer entry-meta">
-                                                        <a class="button cmsms_post_read_more" href="/news/mission-chestnut-continue/index.html">Още</a>
-                                                    </footer>
-                                                </div>
-                                            </article>
-                                            <!--_________________________ Finish Standard Article _________________________ -->
-                                            <!--_________________________ Start Standard Article _________________________ -->
-                                            <article id="post-3461" class="post-3461 post type-post status-publish format-standard hentry category-archive-press-news cmsms_default_type">
-                                                <div class="cmsms_post_info entry-meta">
-                                                    <span class="cmsms_post_format_img  cmsms-icon-desktop-3"></span>
-                                                    <abbr class="published cmsms_post_date" title="01.12.2013">
-                                                        <span class="cmsms_day_mon">01.12</span>
-                                                        <span class="cmsms_year">2013</span>
-                                                    </abbr>
-                                                    <abbr class="dn date updated" title="02.12.2014">02.12.2014</abbr>
-                                                </div>
-                                                <div class="cmsms_post_cont">
-                                                    <header class="cmsms_post_header entry-header">
-                                                        <h1 class="cmsms_post_title entry-title">
-                                                            <a href="/news/mission-chestnut-completed/index.html">Мисия Кестен 2013 – изпълнена!</a>
-                                                        </h1>
-                                                    </header>
-                                                    <div class="cmsms_post_content entry-content">
-                                                        <p>Добри новини за всички приятели на кестените! През есента на 2013 г. децата от пет столични училища – 19 СОУ „Елин Пелин”, 20 ОУ „Тодор...</p>
-                                                    </div>
-                                                    <footer class="cmsms_post_footer entry-meta">
-                                                        <a class="button cmsms_post_read_more" href="/news/mission-chestnut-completed/index.html">Още</a>
-                                                    </footer>
-                                                </div>
-                                            </article>
-                                            <!--_________________________ Finish Standard Article _________________________ -->
-                                            <!--_________________________ Start Standard Article _________________________ -->
-                                            <article id="post-3413" class="post-3413 post type-post status-publish format-standard has-post-thumbnail hentry category-archive-highlights category-archive-news cmsms_default_type">
-                                                <div class="cmsms_post_info entry-meta">
-                                                    <span class="cmsms_post_format_img  cmsms-icon-desktop-3"></span>
-                                                    <abbr class="published cmsms_post_date" title="10.11.2013">
-                                                        <span class="cmsms_day_mon">10.11</span>
-                                                        <span class="cmsms_year">2013</span>
-                                                    </abbr>
-                                                    <abbr class="dn date updated" title="02.12.2014">02.12.2014</abbr>
-                                                </div>
-                                                <div class="cmsms_post_cont">
-                                                    <figure>
-                                                        <a href="/news/leafs-clean/index.html" title="Събрахме листата!" class="cmsms_img_link preloader">
-                                                            <img width="820" height="490" src="/_content/images/2014/09/blog-16-2013_39-820x490.jpg" class="full-width wp-post-image" alt="Събрахме листата!" title="Събрахме листата!">
-                                                        </a>
-                                                    </figure>
-                                                    <header class="cmsms_post_header entry-header">
-                                                        <h1 class="cmsms_post_title entry-title">
-                                                            <a href="/news/leafs-clean/index.html">Събрахме листата!</a>
-                                                        </h1>
-                                                    </header>
-                                                    <div class="cmsms_post_content entry-content">
-                                                        <p>Мисия Кестен и учениците от петте училища събираха кестенови листа в Борисовата градина, паркът на Военна академия, улиците в квартала около 19-то СОУ и парка...</p>
-                                                    </div>
-                                                    <footer class="cmsms_post_footer entry-meta">
-                                                        <a class="button cmsms_post_read_more" href="/news/leafs-clean/index.html">Oще</a>
-                                                    </footer>
-                                                </div>
-                                            </article>
-                                            <!--_________________________ Finish Standard Article _________________________ -->
-                                            <!--_________________________ Start Link Article _________________________ -->
-                                            <article id="post-3411" class="post-3411 post type-post status-publish format-link hentry category-archive-press-news cmsms_default_type">
-                                                <div class="cmsms_post_info entry-meta">
-                                                    <span class="cmsms_post_format_img  cmsms-icon-globe-6"></span>
-                                                    <abbr class="published cmsms_post_date" title="05.11.2013">
-                                                        <span class="cmsms_day_mon">05.11</span>
-                                                        <span class="cmsms_year">2013</span>
-                                                    </abbr>
-                                                    <abbr class="dn date updated" title="02.12.2014">02.12.2014</abbr>
-                                                </div>
-                                                <div class="cmsms_post_cont">
-                                                    <header class="cmsms_post_header entry-header">
-                                                        <h1 class="cmsms_post_title entry-title">
-                                                            <a href="/_content/pdf/Horse_Chesnut_Camerraria.pdf" target="_blank">План за борба с молеца</a>
-                                                        </h1>
-                                                        <h5 class="cmsms_post_subtitle">http://kesteni.bg/_content/pdf/Horse_Chesnut_Camerraria.pdf</h5>
-                                                    </header>
-                                                    <div class="cmsms_post_content entry-content">
-                                                        <p>Планът описва заплахите за конския кестен на територията на град София. Извършен е пространствен анализ на картотекираните в рамките на проекта дървета. Посочени са мерки за контрол на по-важните заплахи, застрашаващи съществуването на конския кестен в София. Разписани са план за действие и конкретни мерки, които да бъдат предприети за всяка една от картотекираните градски градини.</p>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                            <!--_________________________ Finish Link Article _________________________ -->
-                                            <!--_________________________ Start Link Article _________________________ -->
-                                            <article id="post-3409" class="post-3409 post type-post status-publish format-link hentry category-archive-press-news cmsms_default_type">
-                                                <div class="cmsms_post_info entry-meta">
-                                                    <span class="cmsms_post_format_img  cmsms-icon-globe-6"></span>
-                                                    <abbr class="published cmsms_post_date" title="01.11.2013">
-                                                        <span class="cmsms_day_mon">01.11</span>
-                                                        <span class="cmsms_year">2013</span>
-                                                    </abbr>
-                                                    <abbr class="dn date updated" title="02.12.2014">02.12.2014</abbr>
-                                                </div>
-                                                <div class="cmsms_post_cont">
-                                                    <header class="cmsms_post_header entry-header">
-                                                        <h1 class="cmsms_post_title entry-title">
-                                                            <a href="/_content/pdf/Green_info_report.pdf" target="_blank">Доклад за информацията и нейното управление</a>
-                                                        </h1>
-                                                        <h5 class="cmsms_post_subtitle">http://kesteni.bg/_content/pdf/Green_info_report.pdf</h5>
-                                                    </header>
-                                                    <div class="cmsms_post_content entry-content">
-                                                        <p>Докладът описва каква е наличната в структурите на Столична община информация по отношение на броя, състоянието и пространственото разположение на ценната дървесна растителност на територията на град София. Той разглежда и механизмите с които местната администрация разполага за наблюдение и вземане на управленски решения по отношение на този ресурс. Докладът се фокусира върху наличната информация и нейното управление по отношение на кестеновите дървета на територията на града.</p>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                            <!--_________________________ Finish Link Article _________________________ -->
-                                            <!--_________________________ Start Standard Article _________________________ -->
-                                            <article id="post-3307" class="post-3307 post type-post status-publish format-standard has-post-thumbnail hentry category-archive-highlights category-archive-news cmsms_default_type">
-                                                <div class="cmsms_post_info entry-meta">
-                                                    <span class="cmsms_post_format_img  cmsms-icon-desktop-3"></span>
-                                                    <abbr class="published cmsms_post_date" title="27.10.2013">
-                                                        <span class="cmsms_day_mon">27.10</span>
-                                                        <span class="cmsms_year">2013</span>
-                                                    </abbr>
-                                                    <abbr class="dn date updated" title="02.12.2014">02.12.2014</abbr>
-                                                </div>
-                                                <div class="cmsms_post_cont">
-                                                    <figure>
-                                                        <a href="/news/chestnut-celebration/index.html" title="Празник на кестена" class="cmsms_img_link preloader">
-                                                            <img width="800" height="490" src="/_content/images/2014/09/blog-13-2013_23-800x490.jpg" class="full-width wp-post-image" alt="Празник на кестена" title="Празник на кестена">
-                                                        </a>
-                                                    </figure>
-                                                    <header class="cmsms_post_header entry-header">
-                                                        <h1 class="cmsms_post_title entry-title">
-                                                            <a href="/news/chestnut-celebration/index.html">Празник на кестена</a>
-                                                        </h1>
-                                                    </header>
-                                                    <div class="cmsms_post_content entry-content">
-                                                        <p>Благодарим на всички приятели на кестените в София, с които заедно се забавлявахме на празника! Събота, 26 октомври бе един прекрасен ден с прекрасни хора,...</p>
-                                                    </div>
-                                                    <footer class="cmsms_post_footer entry-meta">
-                                                        <a class="button cmsms_post_read_more" href="/news/chestnut-celebration/index.html">Още</a>
-                                                    </footer>
-                                                </div>
-                                            </article>
-                                            <!--_________________________ Finish Standard Article _________________________ -->
-                                            <!--_________________________ Start Audio Article _________________________ -->
-                                            <article id="post-3305" class="post-3305 post type-post status-publish format-audio hentry category-archive-interviews cmsms_default_type">
-                                                <div class="cmsms_post_info entry-meta">
-                                                    <span class="cmsms_post_format_img  cmsms-icon-music-4"></span>
-                                                    <abbr class="published cmsms_post_date" title="15.10.2013">
-                                                        <span class="cmsms_day_mon">15.10</span>
-                                                        <span class="cmsms_year">2013</span>
-                                                    </abbr>
-                                                    <abbr class="dn date updated" title="02.12.2014">02.12.2014</abbr>
-                                                </div>
-                                                <div class="cmsms_post_cont">
-                                                    <header class="cmsms_post_header entry-header">
-                                                        <h1 class="cmsms_post_title entry-title">
-                                                            БНР Радио София – Интервю с Венета Николова в предаването „София на живо“
-                                                        </h1>
-                                                    </header>
-                                                    <div class="cmsms_audio">
-                                                        <audio class="wp-audio-shortcode" id="audio-3305-1" preload="none" style="width: 100%;" controls="controls">
-                                                            <source type="audio/mpeg" src="/_content/audio/bnr-interview-2230a.mp3?_=1">
-                                                            <a href="/_content/audio/bnr-interview-2.mp3">http://kesteni.bg/_content/audio/bnr-interview-2.mp3</a>
+                                                    <div v-if="post.type ===  'audio'" class="cmsms_audio">
+                                                        <audio class="wp-audio-shortcode" style="width: 100%;" controls>
+                                                            <source :src="post.link" type="audio/mp3" />
                                                         </audio>
                                                     </div>
-                                                    <div class="cmsms_post_content entry-content"></div>
-                                                </div>
-                                            </article>
-                                            <!--_________________________ Finish Audio Article _________________________ -->
-                                            <!--_________________________ Start Standard Article _________________________ -->
-                                            <article id="post-3301" class="post-3301 post type-post status-publish format-standard has-post-thumbnail hentry category-archive-highlights category-archive-news cmsms_default_type">
-                                                <div class="cmsms_post_info entry-meta">
-                                                    <span class="cmsms_post_format_img  cmsms-icon-desktop-3"></span>
-                                                    <abbr class="published cmsms_post_date" title="05.10.2013">
-                                                        <span class="cmsms_day_mon">05.10</span>
-                                                        <span class="cmsms_year">2013</span>
-                                                    </abbr>
-                                                    <abbr class="dn date updated" title="02.12.2014">02.12.2014</abbr>
-                                                </div>
-                                                <div class="cmsms_post_cont">
-                                                    <figure>
-                                                        <a href="/news/five-schools/index.html" title="Пет столични училища се включват в „Мисия Кестен”" class="cmsms_img_link preloader">
-                                                            <img width="820" height="490" src="/_content/images/2013/10/blog-10-2013_1--820x490.jpg" class="full-width wp-post-image" alt="Пет столични училища се включват в „Мисия Кестен”" title="Пет столични училища се включват в „Мисия Кестен”">
-                                                        </a>
-                                                    </figure>
-                                                    <header class="cmsms_post_header entry-header">
-                                                        <h1 class="cmsms_post_title entry-title">
-                                                            <a href="/news/five-schools/index.html">Пет столични училища се включват в „Мисия Кестен”</a>
-                                                        </h1>
-                                                    </header>
-                                                    <div class="cmsms_post_content entry-content">
-                                                        <p>Ученици от 5-ти и 6-ти клас, заедно със своите учители ще участват в преброяването на кестеновите дървета в София. Училищата, с които ще сме заедно...</p>
+                                                    <div v-if="post.type" class="cmsms_post_content entry-content">
+                                                        <p v-for="par in post.text" :key="par" v-html="par"></p>
                                                     </div>
-                                                    <footer class="cmsms_post_footer entry-meta">
-                                                        <a class="button cmsms_post_read_more" href="/news/five-schools/index.html">Oще</a>
+                                                    <div v-if="!post.type" class="cmsms_post_content entry-content">
+                                                        <p v-html="getFirstText(post.text[0])"></p>
+                                                    </div>
+                                                    <footer v-if="!post.type" class="cmsms_post_footer entry-meta">
+                                                        <a class="button cmsms_post_read_more" 
+                                                            :href="'/news/' + post.id">Още</a>
                                                     </footer>
                                                 </div>
                                             </article>
-                                            <!--_________________________ Finish Standard Article _________________________ -->
-                                            <!--_________________________ Start Link Article _________________________ -->
-                                            <article id="post-3298" class="post-3298 post type-post status-publish format-link hentry category-archive-press-news cmsms_default_type">
-                                                <div class="cmsms_post_info entry-meta">
-                                                    <span class="cmsms_post_format_img  cmsms-icon-globe-6"></span>
-                                                    <abbr class="published cmsms_post_date" title="01.10.2013">
-                                                        <span class="cmsms_day_mon">01.10</span>
-                                                        <span class="cmsms_year">2013</span>
-                                                    </abbr>
-                                                    <abbr class="dn date updated" title="02.12.2014">02.12.2014</abbr>
-                                                </div>
-                                                <div class="cmsms_post_cont">
-                                                    <header class="cmsms_post_header entry-header">
-                                                        <h1 class="cmsms_post_title entry-title">
-                                                            <a href="/_content/pdf/Jivotyt_Dnes_01.10.pdf" target="_blank">Вестник "Животът днес" отрази началото на "Мисия Кестен"</a>
-                                                        </h1>
-                                                        <h5 class="cmsms_post_subtitle">http://kesteni.bg/_content/pdf/Jivotyt_Dnes_01.10.pdf</h5>
-                                                    </header>
-                                                    <div class="cmsms_post_content entry-content"></div>
-                                                </div>
-                                            </article>
-                                            <!--_________________________ Finish Link Article _________________________ -->
-                                            <!--_________________________ Start Video Article _________________________ -->
-                                            <article id="post-3296" class="post-3296 post type-post status-publish format-video hentry category-archive-press-news cmsms_default_type">
-                                                <div class="cmsms_post_info entry-meta">
-                                                    <span class="cmsms_post_format_img  cmsms-icon-videocam-5"></span>
-                                                    <abbr class="published cmsms_post_date" title="15.09.2013">
-                                                        <span class="cmsms_day_mon">15.09</span>
-                                                        <span class="cmsms_year">2013</span>
-                                                    </abbr>
-                                                    <abbr class="dn date updated" title="02.12.2014">02.12.2014</abbr>
-                                                </div>
-                                                <div class="cmsms_post_cont">
-                                                    <div class="cmsms_video_wrap">
-                                                        <iframe width="820" height="461" src="https://www.youtube.com/embed/7Qjq99UJfzY?feature=oembed" frameborder="0" allowfullscreen=""></iframe>
-                                                    </div>
-                                                    <header class="cmsms_post_header entry-header">
-                                                        <h1 class="cmsms_post_title entry-title">
-                                                            <a href="/news/bnt-two-info-meetings/index.html">Инфо срещата в 19-то СОУ в новините на БНТ 2</a>
-                                                        </h1>
-                                                    </header>
-                                                    <div class="cmsms_post_content entry-content">
-                                                        <p>Новините на БНТ 2 отразиха първата среща на екипа на Мисия Кестен с децата от 19-то СОУ „Елин Пелин”. Чуйте и вижте какво казаха децата за Мисията!</p>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                            <!--_________________________ Finish Video Article _________________________ -->
-                                            <!--_________________________ Start Audio Article _________________________ -->
-                                            <article id="post-3294" class="post-3294 post type-post status-publish format-audio hentry category-archive-interviews cmsms_default_type">
-                                                <div class="cmsms_post_info entry-meta">
-                                                    <span class="cmsms_post_format_img  cmsms-icon-music-4"></span>
-                                                    <abbr class="published cmsms_post_date" title="13.09.2013">
-                                                        <span class="cmsms_day_mon">13.09</span>
-                                                        <span class="cmsms_year">2013</span>
-                                                    </abbr>
-                                                    <abbr class="dn date updated" title="02.12.2014">02.12.2014</abbr>
-                                                </div>
-                                                <div class="cmsms_post_cont">
-                                                    <header class="cmsms_post_header entry-header">
-                                                        <h1 class="cmsms_post_title entry-title">
-                                                            Радио София – Интервю за проекта в предаването „София днес“
-                                                        </h1>
-                                                    </header>
-                                                    <div class="cmsms_audio">
-                                                        <audio class="wp-audio-shortcode" id="audio-3294-1" preload="none" style="width: 100%;" controls="controls">
-                                                            <source type="audio/mpeg" src="/_content/audio/sofia-dnes-interview230a.mp3?_=1">
-                                                            <a href="/_content/audio/sofia-dnes-interview.mp3">http://kesteni.bg/_content/audio/sofia-dnes-interview.mp3</a>
-                                                        </audio>
-                                                    </div>
-                                                    <div class="cmsms_post_content entry-content"></div>
-                                                </div>
-                                            </article>
-                                            <!--_________________________ Finish Audio Article _________________________ -->
-                                            <!--_________________________ Start Link Article _________________________ -->
-                                            <article id="post-3291" class="post-3291 post type-post status-publish format-link hentry category-archive-press-news cmsms_default_type">
-                                                <div class="cmsms_post_info entry-meta">
-                                                    <span class="cmsms_post_format_img  cmsms-icon-globe-6"></span>
-                                                    <abbr class="published cmsms_post_date" title="11.09.2013">
-                                                        <span class="cmsms_day_mon">11.09</span>
-                                                        <span class="cmsms_year">2013</span>
-                                                    </abbr>
-                                                    <abbr class="dn date updated" title="02.12.2014">02.12.2014</abbr>
-                                                </div>
-                                                <div class="cmsms_post_cont">
-                                                    <header class="cmsms_post_header entry-header">
-                                                        <h1 class="cmsms_post_title entry-title">
-                                                            <a href="/_content/pdf/Plan-for-Action-Mission-Chestnut.pdf" target="_blank">Подробен план за реализация на проект „Мисия Кестен”</a>
-                                                        </h1>
-                                                        <h5 class="cmsms_post_subtitle">http://kesteni.bg/_content/pdf/Plan-for-Action-Mission-Chestnut.pdf</h5>
-                                                    </header>
-                                                    <div class="cmsms_post_content entry-content"></div>
-                                                </div>
-                                            </article>
-                                            <!--_________________________ Finish Link Article _________________________ -->
-                                            <!--_________________________ Start Audio Article _________________________ -->
-                                            <article id="post-3289" class="post-3289 post type-post status-publish format-audio hentry category-archive-interviews cmsms_default_type">
-                                                <div class="cmsms_post_info entry-meta">
-                                                    <span class="cmsms_post_format_img  cmsms-icon-music-4"></span>
-                                                    <abbr class="published cmsms_post_date" title="09.09.2013">
-                                                        <span class="cmsms_day_mon">09.09</span>
-                                                        <span class="cmsms_year">2013</span>
-                                                    </abbr>
-                                                    <abbr class="dn date updated" title="02.12.2014">02.12.2014</abbr>
-                                                </div>
-                                                <div class="cmsms_post_cont">
-                                                    <header class="cmsms_post_header entry-header">
-                                                        <h1 class="cmsms_post_title entry-title">
-                                                            БНР – Интервю с Веселин Цветанов
-                                                        </h1>
-                                                    </header>
-                                                    <div class="cmsms_audio">
-                                                        <audio class="wp-audio-shortcode" id="audio-3289-2" preload="none" style="width: 100%;" controls="controls">
-                                                            <source type="audio/mpeg" src="/_content/audio/bnr-interviewe6f8.mp3?_=2">
-                                                            <a href="/_content/audio/bnr-interview.mp3">http://kesteni.bg/_content/audio/bnr-interview.mp3</a>
-                                                        </audio>
-                                                    </div>
-                                                    <div class="cmsms_post_content entry-content"></div>
-                                                </div>
-                                            </article>
-                                            <!--_________________________ Finish Audio Article _________________________ -->
-                                            <!--_________________________ Start Link Article _________________________ -->
-                                            <article id="post-3285" class="post-3285 post type-post status-publish format-link hentry category-archive-press-news cmsms_default_type">
-                                                <div class="cmsms_post_info entry-meta">
-                                                    <span class="cmsms_post_format_img  cmsms-icon-globe-6"></span>
-                                                    <abbr class="published cmsms_post_date" title="07.09.2013">
-                                                        <span class="cmsms_day_mon">07.09</span>
-                                                        <span class="cmsms_year">2013</span>
-                                                    </abbr>
-                                                    <abbr class="dn date updated" title="02.12.2014">02.12.2014</abbr>
-                                                </div>
-                                                <div class="cmsms_post_cont">
-                                                    <header class="cmsms_post_header entry-header">
-                                                        <h1 class="cmsms_post_title entry-title">
-                                                            <a href="http://www.dnevnik.bg/zelen/2013/09/07/2135415_misiia_kesten_zapochva_v_stolichni_uchilishta" target="_blank">Дневник отрази старта на "Мисия Кестен"</a>
-                                                        </h1>
-                                                        <h5 class="cmsms_post_subtitle">http://www.dnevnik.bg/zelen/2013/09/07/2135415_misiia_kesten_zapochva_v_stolichni_uchilishta</h5>
-                                                    </header>
-                                                </div>
-                                            </article>
-                                            <!--_________________________ Finish Link Article _________________________ -->
-                                            <!--_________________________ Start Standard Article _________________________ -->
-                                            <article id="post-3283" class="post-3283 post type-post status-publish format-standard hentry category-archive-news cmsms_default_type">
-                                                <div class="cmsms_post_info entry-meta">
-                                                    <span class="cmsms_post_format_img  cmsms-icon-desktop-3"></span>
-                                                    <abbr class="published cmsms_post_date" title="01.09.2013">
-                                                        <span class="cmsms_day_mon">01.09</span>
-                                                        <span class="cmsms_year">2013</span>
-                                                    </abbr>
-                                                    <abbr class="dn date updated" title="02.12.2014">02.12.2014</abbr>
-                                                </div>
-                                                <div class="cmsms_post_cont">
-                                                    <header class="cmsms_post_header entry-header">
-                                                        <h1 class="cmsms_post_title entry-title">
-                                                            <a href="/news/mission-chestnut-looking-for-schools/index.html">Мисия Кестен търси своите училища</a>
-                                                        </h1>
-                                                    </header>
-                                                    <div class="cmsms_post_content entry-content">
-                                                        <p>В своята мисия, проектният екип има нужда от помощта на шест столични основни училища, чиито ученици от 5ти-6ти клас, използвайки специално създадено за проекта приложение...</p>
-                                                    </div>
-                                                    <footer class="cmsms_post_footer entry-meta">
-                                                        <a class="button cmsms_post_read_more" href="/news/mission-chestnut-looking-for-schools/index.html">Още</a>
-                                                    </footer>
-                                                </div>
-                                            </article>
-                                            <!--_________________________ Finish Standard Article _________________________ -->
-                                            <!--_________________________ Start Standard Article _________________________ -->
-                                            <article id="post-3280" class="post-3280 post type-post status-publish format-standard hentry category-archive-news cmsms_default_type">
-                                                <div class="cmsms_post_info entry-meta">
-                                                    <span class="cmsms_post_format_img  cmsms-icon-desktop-3"></span>
-                                                    <abbr class="published cmsms_post_date" title="01.08.2013">
-                                                        <span class="cmsms_day_mon">01.08</span>
-                                                        <span class="cmsms_year">2013</span>
-                                                    </abbr>
-                                                    <abbr class="dn date updated" title="02.12.2014">02.12.2014</abbr>
-                                                </div>
-                                                <div class="cmsms_post_cont">
-                                                    <header class="cmsms_post_header entry-header">
-                                                        <h1 class="cmsms_post_title entry-title">
-                                                            <a href="/news/we-started/index.html">Започнахме!</a>
-                                                        </h1>
-                                                    </header>
-                                                    <div class="cmsms_post_content entry-content">
-                                                        <p>На 19.07, официално беше дадено начало на Мисия Кестен. Фондация Цвете подписа договор за финансиране и изпълнение на проекта с Програмата за подкрепа на НПО...</p>
-                                                    </div>
-                                                    <footer class="cmsms_post_footer entry-meta">
-                                                        <a class="button cmsms_post_read_more" href="/news/we-started/index.html">Още</a>
-                                                    </footer>
-                                                </div>
-                                            </article>
-                                            <!--_________________________ Finish Standard Article _________________________ -->
-                                            <!--_________________________ Start Standard Article _________________________ -->
-                                            <article id="post-3268" class="post-3268 post type-post status-publish format-standard has-post-thumbnail hentry category-archive-news cmsms_default_type">
-                                                <div class="cmsms_post_info entry-meta">
-                                                    <span class="cmsms_post_format_img  cmsms-icon-desktop-3"></span>
-                                                    <abbr class="published cmsms_post_date" title="01.07.2013">
-                                                        <span class="cmsms_day_mon">01.07</span>
-                                                        <span class="cmsms_year">2013</span>
-                                                    </abbr>
-                                                    <abbr class="dn date updated" title="02.12.2014">02.12.2014</abbr>
-                                                </div>
-                                                <div class="cmsms_post_cont">
-                                                    <figure>
-                                                        <a href="/news/old-campaign/index.html" title="Да спасим в суматохата кестените" class="cmsms_img_link preloader">
-                                                            <img width="800" height="490" src="/_content/images/2013/07/blog-01-2013_02-800x490.jpg" class="full-width wp-post-image" alt="Да спасим в суматохата кестените" title="Да спасим в суматохата кестените">
-                                                        </a>
-                                                    </figure>
-                                                    <header class="cmsms_post_header entry-header">
-                                                        <h1 class="cmsms_post_title entry-title">
-                                                            <a href="/news/old-campaign/index.html">Да спасим в суматохата кестените</a>
-                                                        </h1>
-                                                    </header>
-                                                    <div class="cmsms_post_content entry-content">
-                                                        <p>Кампанията на Списание 8 и Вашият градинар „Да спасим в суматохата кестените” се проведе две поредни години – всяка в два етапа – пролетен и...</p>
-                                                    </div>
-                                                    <footer class="cmsms_post_footer entry-meta">
-                                                        <a class="button cmsms_post_read_more" href="/news/old-campaign/index.html">Oще</a>
-                                                    </footer>
-                                                </div>
-                                            </article>
-                                            <!--_________________________ Finish Standard Article _________________________ -->
                                         </div>
                                     </div>
                                 </div>
@@ -911,22 +73,49 @@
                 </div>
             </div>
         </div>
-        <!-- _________________________ Finish Content _________________________ -->
     </section>
 </div>
 </template>
 
 <script>
+import * as news from "../assets/news.json";
+
 export default {
-  name: 'News',
-  components: {
-  },
-  data() {
-    return {
-      location: "News",
-      title: "News"
+    name: 'News',
+    components: {
+    },
+    data() {
+        return {
+            location: "News",
+            title: "News",
+            allNews: null
+        }
+    },
+    mounted() {
+        this.allNews = news.default.sort(function(a, b) {
+            var nameA = a.date.toUpperCase();
+            var nameB = b.date.toUpperCase();
+            
+            if (nameA < nameB) {
+                return 1;
+            }
+            if (nameA > nameB) {
+                return -1;
+            }
+
+            return 0;
+        })
+    },
+    methods: {
+        getDate(dateString) {
+            let date = new Date(dateString);
+
+            return date.getDate() + '/' + date.getMonth() + '/ ' + date.getFullYear();
+        },
+        getFirstText(paragraph) {
+            return paragraph.substring(0, 180) + '...';
+        }
     }
-  }
 }
 </script>
 

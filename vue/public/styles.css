@@ -8,6 +8,6 @@
     color: #323943;
 }
 
-.headline, .headline_outer {
+.headline.low, .low .headline_outer {
     height: 100px !important;
 }
