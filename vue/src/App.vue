@@ -127,6 +127,7 @@ export default {
 
     that.$router.afterEach((to) => {
       that.location = to.name;
+      window.scrollTo(0, 0);
     });
 
     that.location = this.$route.name;
