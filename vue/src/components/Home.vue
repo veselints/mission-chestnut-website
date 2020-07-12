@@ -153,12 +153,12 @@
                                               <div class="cmsms_slider_post_cont">
                                                   <figure class="cmsms_img_rollover_wrap preloader"><img width="580" height="460" src="photos/2016/07/IMG_5201-580x460.jpg" class="full-width wp-post-image" alt="Презаредихме капаните и в &#8222;Яворов&#8243;!" title="Презаредихме капаните и в &#8222;Яворов&#8243;!" />
                                                       <div class="cmsms_img_rollover">
-                                                          <a href="photos/2016/07/IMG_5201.jpg" rel="ilightbox[4121_5e3286cb667c7]" title="Презаредихме капаните и в &#8222;Яворов&#8243;!" class="cmsms_image_link"><span class="cmsms-icon-search-7"></span></a><a href="/news/20" title="Презаредихме капаните и в &#8222;Яворов&#8243;!" class="cmsms_open_link"><span class="cmsms-icon-attach-6"></span></a>
+                                                          <a href="photos/2016/07/IMG_5201.jpg" rel="ilightbox[4121_5e3286cb667c7]" title="Презаредихме капаните и в &#8222;Яворов&#8243;!" class="cmsms_image_link"><span class="cmsms-icon-search-7"></span></a><router-link to="/news/20" title="Презаредихме капаните и в &#8222;Яворов&#8243;!" class="cmsms_open_link"><span class="cmsms-icon-attach-6"></span></router-link>
                                                       </div>
                                                   </figure>
                                                   <header class="cmsms_slider_post_header entry-header">
                                                       <h3 class="cmsms_slider_post_title entry-title">
-                                                          <a href="/news/20">Презаредихме капаните и в ж.к. &#8222;Яворов&#8243;!</a></h3></header>
+                                                          <router-link to="/news/20">Презаредихме капаните и в ж.к. &#8222;Яворов&#8243;!</router-link></h3></header>
                                                   <div class="cmsms_slider_post_content entry-content">
                                                       <p>Презаредихме капаните и в &#8222;Яворов&#8243;! До края на лятото ни очаква още едно презареждане...</p>
                                                   </div>
@@ -173,10 +173,10 @@
                                               <span class="cmsms_slider_post_format_img cmsms-icon-desktop-3"></span>
                                               <div class="cmsms_slider_post_cont">
                                                   <figure class="cmsms_img_rollover_wrap preloader"><img width="580" height="460" src="photos/2016/07/20160602_133138-580x460.jpg" class="full-width wp-post-image" alt="Презареждане на капани в парк &#8222;Надежда&#8220;" title="Презареждане на капани в парк &#8222;Надежда&#8220;" />
-                                                      <div class="cmsms_img_rollover"><a href="photos/2016/07/20160602_133138.jpg" rel="ilightbox[4110_5e3286cb6b71e]" title="Презареждане на капани в парк &#8222;Надежда&#8220;" class="cmsms_image_link"><span class="cmsms-icon-search-7"></span></a><a href="/news/17" title="Презареждане на капани в парк &#8222;Надежда&#8220;" class="cmsms_open_link"><span class="cmsms-icon-attach-6"></span></a></div>
+                                                      <div class="cmsms_img_rollover"><a href="photos/2016/07/20160602_133138.jpg" rel="ilightbox[4110_5e3286cb6b71e]" title="Презареждане на капани в парк &#8222;Надежда&#8220;" class="cmsms_image_link"><span class="cmsms-icon-search-7"></span></a>hr<router-link to="/news/17" title="Презареждане на капани в парк &#8222;Надежда&#8220;" class="cmsms_open_link"><span class="cmsms-icon-attach-6"></span></router-link></div>
                                                   </figure>
                                                   <header class="cmsms_slider_post_header entry-header">
-                                                      <h3 class="cmsms_slider_post_title entry-title"><a href="/news/17">Презареждане на капани в парк &#8222;Надежда&#8220;</a></h3></header>
+                                                      <h3 class="cmsms_slider_post_title entry-title"><router-link to="/news/17">Презареждане на капани в парк &#8222;Надежда&#8220;</router-link></h3></header>
                                                   <div class="cmsms_slider_post_content entry-content">
                                                       <p>Благодарим на Христо Желев и неговият пети клас от 54-то училище &#8222;Св. Иван Рилски&#8220;...</p>
                                                   </div>
@@ -191,10 +191,10 @@
                                               <span class="cmsms_slider_post_format_img cmsms-icon-desktop-3"></span>
                                               <div class="cmsms_slider_post_cont">
                                                   <figure class="cmsms_img_rollover_wrap preloader"><img width="580" height="460" src="photos/2016/05/20160516_184554-580x460.jpg" class="full-width wp-post-image" alt="Презаредихме капаните във Военна академия" title="Презаредихме капаните във Военна академия" />
-                                                      <div class="cmsms_img_rollover"><a href="photos/2016/05/20160516_184554.jpg" rel="ilightbox[4106_5e3286cb6ff06]" title="Презаредихме капаните във Военна академия" class="cmsms_image_link"><span class="cmsms-icon-search-7"></span></a><a href="/news/19" title="Презаредихме капаните във Военна академия" class="cmsms_open_link"><span class="cmsms-icon-attach-6"></span></a></div>
+                                                      <div class="cmsms_img_rollover"><a href="photos/2016/05/20160516_184554.jpg" rel="ilightbox[4106_5e3286cb6ff06]" title="Презаредихме капаните във Военна академия" class="cmsms_image_link"><span class="cmsms-icon-search-7"></span></a><router-link to="/news/19" title="Презаредихме капаните във Военна академия" class="cmsms_open_link"><span class="cmsms-icon-attach-6"></span></router-link></div>
                                                   </figure>
                                                   <header class="cmsms_slider_post_header entry-header">
-                                                      <h3 class="cmsms_slider_post_title entry-title"><a href="/news/19">Презаредихме капаните във Военна академия</a></h3></header>
+                                                      <h3 class="cmsms_slider_post_title entry-title"><router-link to="/news/19">Презаредихме капаните във Военна академия</router-link></h3></header>
                                                   <div class="cmsms_slider_post_content entry-content">
                                                       <p>Хиляди благодарности на приятелите на кестените от парка на Военна академия...</p>
                                                   </div>

@@ -21,7 +21,7 @@
                                                 </div>
                                                 <div class="cmsms_post_cont">
                                                     <figure v-if="!post.type && post.photos.length">
-                                                        <a :href="'/news/' + post.id" 
+                                                        <router-link :to="'/news/' + post.id" 
                                                             :title="post.title" 
                                                             class="cmsms_img_link preloader">
                                                             <img width="820" 
@@ -29,7 +29,7 @@
                                                                 class="full-width wp-post-image"  
                                                                 :src="'photos/' + post.photos[0]" 
                                                                 :alt="post.title">
-                                                        </a>
+                                                        </router-link>
                                                     </figure>
                                                     <div v-if="post.type === 'video'" class="cmsms_video_wrap">
                                                         <iframe width="820" 
@@ -40,7 +40,7 @@
                                                     </div>
                                                     <header class="cmsms_post_header entry-header">
                                                         <h1 class="cmsms_post_title entry-title">
-                                                            <a v-if="!post.type" :href="'/news/' + post.id">{{post.title}}</a>
+                                                            <router-link :to="'/news/' + post.id" v-if="!post.type">{{post.title}}</router-link>
                                                             <a v-if="post.type === 'link'" :href="post.link">{{post.title}}</a>
                                                             <span v-if="post.type === 'audio' || post.type === 'video'">{{post.title}}</span>
                                                         </h1>
@@ -59,8 +59,7 @@
                                                         <p v-html="getFirstText(post.text[0])"></p>
                                                     </div>
                                                     <footer v-if="!post.type" class="cmsms_post_footer entry-meta">
-                                                        <a class="button cmsms_post_read_more" 
-                                                            :href="'/news/' + post.id">Още</a>
+                                                        <router-link :to="'/news/' + post.id" class="button cmsms_post_read_more">Още</router-link>
                                                     </footer>
                                                 </div>
                                             </article>

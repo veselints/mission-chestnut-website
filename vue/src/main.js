@@ -11,6 +11,7 @@ import Results from './components/Results.vue'
 import News from './components/News.vue'
 import AboutUs from './components/AboutUs.vue'
 import Contacts from './components/Contacts.vue'
+import Article from './components/Article.vue'
 
 Vue.use(VueRouter)
 
@@ -19,6 +20,7 @@ Vue.config.productionTip = false
 const routes = [
   { name: "", path: '/', component: Home },
   { name: "", path: '/home', component: Home },
+  { path: '*', redirect: '/' },
   { name: "Нашата мисия", path: '/our-mission', component: OurMission },
   { name: "Листоминиращ молец", path: '/moths', component: Moths },
   { name: "Събиране на шума", path: '/leafs', component: Leafs },
@@ -28,11 +30,12 @@ const routes = [
   { name: "Новини", path: '/news', component: News },
   { name: "За нас", path: '/about-us', component: AboutUs },
   { name: "Контакти", path: '/contacts', component: Contacts },
-
+  { name: "Новини", path: '/news/:id', component: Article }
 ]
 
 const router = new VueRouter({
-  routes
+  routes: routes,
+  mode: 'history'
 })
 
 new Vue({
